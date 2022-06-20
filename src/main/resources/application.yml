@@ -1,0 +1,20 @@
+spring:
+  jpa:
+    show-sql: false
+    properties:
+
+      hibernate.format_sql: false
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  application:
+    name: Che Casa Vuoi
+  h2:
+    console:
+      path: /h2
+      enabled: true
+  profiles:
+    active: dev
+server:
+  port: 8095

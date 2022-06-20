@@ -1,0 +1,26 @@
+spring:
+  mail:
+    protocol: smtp
+    host: smtp.office365.com
+    port: 587
+    username: devtestiet@outlook.it
+    password: devtesting22
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enabled: true
+            required: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+#  datasource:
+#    platform: org.hibernate.dialect.Oracle12cDialect
+#    driver-class-name: oracle.jdbc.OracleDriver
+#
+## SVILUPPO AZIENDALE
+#    url: jdbc:oracle:thin:@192.168.2.82:1521/orcl
+#
+#    username: LDDBCK
+#    password: Lddus3r

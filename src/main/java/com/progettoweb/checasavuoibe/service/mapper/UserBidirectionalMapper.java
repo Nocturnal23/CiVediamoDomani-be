@@ -9,4 +9,10 @@ import org.mapstruct.*;
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, User> {
+
+    @Override
+    @Mapping(source = "entity.id", target = "id")
+    @Mapping(target = "createdDate", ignore = true)
+    @Mapping(target = "modifiedDate", ignore = true)
+    User toUpdateEntity(UserDto dto, User entity);
 }

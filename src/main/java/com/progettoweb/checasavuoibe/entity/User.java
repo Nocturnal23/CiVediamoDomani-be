@@ -8,14 +8,15 @@ import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 
+@Table(name = "users")
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class User extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
-    @SequenceGenerator(sequenceName = "user_seq", allocationSize = 1, name = "user_seq")
+    @SequenceGenerator(sequenceName = "users_id_seq", allocationSize = 1, name = "users_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 

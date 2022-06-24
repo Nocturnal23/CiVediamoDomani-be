@@ -22,7 +22,7 @@ public abstract class BaseEntity implements IdentifiableEntity {
     @Column(name = "modified_date")
     protected LocalDateTime modifiedDate;
 
-    @Column(name = "deleted", nullable = false, columnDefinition = " number(10,0) default 0")
+    @Column(name = "deleted", nullable = false)
     protected Long deleted;
 
 }

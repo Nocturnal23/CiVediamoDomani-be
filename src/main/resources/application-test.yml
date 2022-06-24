@@ -1,0 +1,12 @@
+spring:
+    jpa:
+        hibernate:
+            ddl-auto: none
+        database-platform: h2
+    datasource:
+        platform: h2
+        url: jdbc:h2:~/checasavuoi
+        username: sa
+        password:
+        driver-class-name: org.h2.Driver
+        initialization-mode: embedded

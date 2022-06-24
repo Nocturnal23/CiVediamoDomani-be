@@ -97,14 +97,14 @@ public abstract class ServiceTemplate<
 //        repository.save(entity);
     }
 
-//    public E getEntity(Long id) {
-//        return repository.findById(id)
-//                .orElseThrow(() -> new EntityNotFoundException(getEntityName(), "id", id.toString()));
-//    }
+    public E getEntity(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Non trovato!!"));
+    }
 
-//    public BaseDto getDto(Long id) {
-//        return mapper.toDto(getEntity(id));
-//    }
+    public BaseDto getDto(Long id) {
+        return mapper.toDto(getEntity(id));
+    }
 
 //    public UserDto getCurrentUserDto() {
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

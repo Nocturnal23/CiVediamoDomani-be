@@ -26,11 +26,11 @@ public abstract class ControllerTemplate<
         return new ResponseEntity<>(service.save(dto), HttpStatus.OK);
     }
 
-//    @GetMapping(value = "/{id}")
-//    public ResponseEntity<Object> findById(@PathVariable Long id) {
-//        return new ResponseEntity<>(service.getDto(id), HttpStatus.OK);
-//    }
-//
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Object> findById(@PathVariable Long id) {
+        return new ResponseEntity<>(service.getDto(id), HttpStatus.OK);
+    }
+
 //    @PutMapping(value = "/{id}")
 //    public ResponseEntity<Object> update(@NotNull @RequestBody D dto,
 //                                         @PathVariable Long id) {

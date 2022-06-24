@@ -4,6 +4,7 @@ import com.progettoweb.checasavuoibe.commons.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 
@@ -17,4 +18,13 @@ public class User extends BaseEntity {
     @SequenceGenerator(sequenceName = "user_seq", allocationSize = 1, name = "user_seq")
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
+
+    @Column(name = "first_name")
+    @NonNull
+    private String firstName;
+
+    @Column(name = "last_name")
+    @NonNull
+    private String lastName;
+
 }

@@ -10,4 +10,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto extends BaseDto {
+
+    private String firstName;
+
+    private String lastName;
 }

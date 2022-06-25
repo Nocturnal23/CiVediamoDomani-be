@@ -31,15 +31,15 @@ public abstract class ControllerTemplate<
         return new ResponseEntity<>(service.getDto(id), HttpStatus.OK);
     }
 
-//    @PutMapping(value = "/{id}")
-//    public ResponseEntity<Object> update(@NotNull @RequestBody D dto,
-//                                         @PathVariable Long id) {
-//        return new ResponseEntity<>(service.update(dto, id), HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping(value = "/{id}")
-//    public ResponseEntity<Void> delete(@PathVariable Long id) {
-//        service.delete(id);
-//        return ResponseEntity.noContent().build();
-//    }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Object> update(@NotNull @RequestBody D dto,
+                                         @PathVariable Long id) {
+        return new ResponseEntity<>(service.update(dto, id), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

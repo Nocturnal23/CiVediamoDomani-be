@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 public class UserSpecificationBuilder extends SpecificationBuilder<User, UserCriteria> {
     @Override
     public Specification<User> filter(UserCriteria criteria) {
-        return null;
+        Specification<User> specification = super.filter(criteria);
+
+        return specification;
     }
 }

@@ -16,6 +16,6 @@ public class UserController extends ControllerTemplate<UserDto, UserCriteria, Us
 
     @GetMapping("/hello")
     public String helloWorld() {
-        return "Hello World!";
+        return "UserController works!";
     }
 }

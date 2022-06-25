@@ -1,6 +1,8 @@
 package com.progettoweb.checasavuoibe.commons;
 
+import com.progettoweb.checasavuoibe.exception.RestrictedActionException;
 import com.progettoweb.checasavuoibe.service.UserService;
+import com.progettoweb.checasavuoibe.utils.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,7 +49,7 @@ public abstract class ServiceTemplate<
         return mapper;
     }
 
-    public Page<? extends BaseDto> filter(@Nullable C criteria) {
+    public Page<D> filter(@Nullable C criteria) {
         return getEntities(criteria).map(mapper::toDto);
     }
 
@@ -70,36 +72,32 @@ public abstract class ServiceTemplate<
         return repository.findAll(specificationBuilder.filter(criteria));
     }
 
-    public abstract String[] getHeaders();
-
-    public abstract String[] populate(E entity);
-
-    public BaseDto save(@NotNull D dto) {
+    public D save(@NotNull D dto) {
         E entity = mapper.toEntity(dto);
-//        entity.setDeleted(Constants.Boolean.FALSE);
+        entity.setDeleted(Constants.Boolean.FALSE);
         return mapper.toDto(repository.save(entity));
     }
 
-//    public D update(@NotNull D dto, Long id) {
-//        E entityFromDb = getEntity(id);
-//        E updatedEntity = mapper.toUpdateEntity(dto, entityFromDb);
-//        E savedEntity = repository.save(updatedEntity);
-//        return mapper.toDto(savedEntity);
-//
-//    }
+    public D update(@NotNull D dto, Long id) {
+        E entityFromDb = getEntity(id);
+        E updatedEntity = mapper.toUpdateEntity(dto, entityFromDb);
+        E savedEntity = repository.save(updatedEntity);
+        return mapper.toDto(savedEntity);
+
+    }
 
     public void delete(Long id) {
-//        if (!eligibleToDelete(id)) {
-//            throw new DeleteRestrictionException(getEntityName(), id);
-//        }
-//        E entity = getEntity(id);
-//        entity.setDeleted(Constants.Boolean.TRUE);
-//        repository.save(entity);
+        if (!eligibleToDelete(id)) {
+            throw new RestrictedActionException(getEntityName(), id);
+        }
+        E entity = getEntity(id);
+        entity.setDeleted(Constants.Boolean.TRUE);
+        repository.save(entity);
     }
 
     public E getEntity(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Non trovato!!"));
+                .orElseThrow(() -> new RestrictedActionException("Non trovato!"));
     }
 
     public BaseDto getDto(Long id) {

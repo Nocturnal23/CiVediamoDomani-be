@@ -17,22 +17,12 @@ public class UserService extends ServiceTemplate<User, UserDto, UserCriteria,
     }
 
     @Override
-    public String[] getHeaders() {
-        return new String[0];
-    }
-
-    @Override
-    public String[] populate(User entity) {
-        return new String[0];
-    }
-
-    @Override
     protected boolean eligibleToDelete(Long id) {
         return false;
     }
 
     @Override
     public String getEntityName() {
-        return null;
+        return User.class.getSimpleName();
     }
 }

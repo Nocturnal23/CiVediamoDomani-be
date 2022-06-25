@@ -16,5 +16,16 @@ public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, Us
     @Mapping(target = "modifiedDate", ignore = true)
     @Mapping(source = "dto.firstName", target = "firstName")
     @Mapping(source = "dto.lastName", target = "lastName")
+    @Mapping(source = "dto.email", target = "email")
+    @Mapping(source = "dto.phoneNum", target = "phoneNum")
+    @Mapping(source = "dto.birthday", target = "birthday")
+    @Mapping(source = "dto.fiscalCode", target = "fiscalCode")
+    @Mapping(source = "dto.documentId", target = "documentId")
+    @Mapping(source = "dto.residence", target = "residence")
+    @Mapping(source = "dto.role", target = "role")
+    @Mapping(source = "dto.postedAds", target = "postedAds")
+    @Mapping(source = "dto.savedAds", target = "savedAds")
+    @Mapping(source = "dto.postedReviews", target = "postedReviews")
+
     User toUpdateEntity(UserDto dto, User entity);
 }

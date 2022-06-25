@@ -28,3 +28,5 @@ spring:
             max-active: 1
             test-on-borrow: true
             max-idle: 1
+#        data: classpath:/data.sql
+#        schema: classpath:/schema.sql

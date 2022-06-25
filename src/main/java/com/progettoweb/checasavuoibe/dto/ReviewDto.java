@@ -13,7 +13,7 @@ public class ReviewDto extends BaseDto {
 
     private UserDto sender;
 
-    private UserDto recipient;
+    private AdvertDto recipient;
 
     private Long rating;
 

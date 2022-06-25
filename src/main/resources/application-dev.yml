@@ -1,29 +1,30 @@
 spring:
-#  mail:
-#    protocol: smtp
-#    host: smtp.office365.com
-#    port: 587
-#    username: devtestiet@outlook.it
-#    password: devtesting22
-#    properties:
-#      mail:
-#        smtp:
-#          auth: true
-#          starttls:
-#            enabled: true
-#            required: true
-  jpa:
-    hibernate:
-      ddl-auto: create
-    database: postgresql
-  datasource:
-    platform: org.hibernate.dialect.PostgreSQLDialect
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://surus.db.elephantsql.com:5432/tihkejoo
-    username: tihkejoo
-    password: C2gTYUVsL3JBzOkxdSUmUFn79Jd82wrw
-    initialization-mode: always
-    tomcat:
-      max-wait: 1000
-      max-active: 1
-      test-on-borrow: true
+    #  mail:
+    #    protocol: smtp
+    #    host: smtp.office365.com
+    #    port: 587
+    #    username: devtestiet@outlook.it
+    #    password: devtesting22
+    #    properties:
+    #      mail:
+    #        smtp:
+    #          auth: true
+    #          starttls:
+    #            enabled: true
+    #            required: true
+    jpa:
+        hibernate:
+            ddl-auto: none
+        database: postgresql
+    datasource:
+        initialization-mode: always
+        platform: org.hibernate.dialect.PostgreSQLDialect
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://surus.db.elephantsql.com:5432/tihkejoo
+        username: tihkejoo
+        password: C2gTYUVsL3JBzOkxdSUmUFn79Jd82wrw
+        tomcat:
+            max-wait: 1000
+            max-active: 1
+            test-on-borrow: true
+            max-idle: 1

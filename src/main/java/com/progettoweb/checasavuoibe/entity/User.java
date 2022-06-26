@@ -34,6 +34,14 @@ public class User extends BaseEntity {
     @NonNull
     private String email;
 
+    @Column(name = "password_digest")
+    @NonNull
+    private String passwordDigest;
+
+    @Column(name = "password_salt")
+    @NonNull
+    private String passwordSalt;
+
     @Column(name = "phone_num")
     @NonNull
     private String phoneNum;

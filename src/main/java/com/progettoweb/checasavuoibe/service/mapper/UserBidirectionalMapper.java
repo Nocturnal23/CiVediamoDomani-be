@@ -7,7 +7,8 @@ import org.mapstruct.*;
 
 @Mapper(componentModel = "spring",
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-        unmappedTargetPolicy = ReportingPolicy.IGNORE)
+        unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        uses = {AdvertBidirectionalMapper.class, ReviewBidirectionalMapper.class})
 public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, User> {
 
     @Override
@@ -21,7 +22,8 @@ public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, Us
     @Mapping(source = "dto.birthday", target = "birthday")
     @Mapping(source = "dto.fiscalCode", target = "fiscalCode")
     @Mapping(source = "dto.documentId", target = "documentId")
-    @Mapping(source = "dto.residence", target = "residence")
+    @Mapping(source = "dto.city", target = "city")
+    @Mapping(source = "dto.country", target = "country")
     @Mapping(source = "dto.role", target = "role")
     @Mapping(source = "dto.postedAds", target = "postedAds")
     @Mapping(source = "dto.savedAds", target = "savedAds")

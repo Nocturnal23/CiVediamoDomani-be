@@ -51,18 +51,22 @@ public class User extends BaseEntity {
     @NonNull
     private String documentId;
 
-    @Column(name = "residence")
+    @Column(name = "city")
     @NonNull
-    private String residence;
+    private String city;
+
+    @Column(name = "country")
+    @NonNull
+    private String country;
 
     @Column(name = "role")
     @NonNull
     private Long role;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY) //TODO: Controllare si collega a user_id.
+    @OneToMany(mappedBy = "advertiser", fetch = FetchType.LAZY)
     private List<Advert> postedAds;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY) //TODO: Controllare si collega a order_id.
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY) //TODO:A
     private List<Advert> savedAds;
 
     @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY)

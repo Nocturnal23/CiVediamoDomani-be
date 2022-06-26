@@ -29,7 +29,9 @@ public class UserDto extends BaseDto {
 
     private String documentId;
 
-    private String residence;
+    private String city;
+
+    private String country;
 
     private Long role;
 

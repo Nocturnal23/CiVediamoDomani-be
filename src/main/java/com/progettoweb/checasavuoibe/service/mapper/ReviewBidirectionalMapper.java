@@ -7,7 +7,8 @@ import org.mapstruct.*;
 
 @Mapper(componentModel = "spring",
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-        unmappedTargetPolicy = ReportingPolicy.IGNORE)
+        unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        uses = {UserBidirectionalMapper.class, AdvertBidirectionalMapper.class})
 public interface ReviewBidirectionalMapper extends BidirectionalMapper<ReviewDto, Review> {
     @Override
     @Mapping(source = "entity.id", target = "id")

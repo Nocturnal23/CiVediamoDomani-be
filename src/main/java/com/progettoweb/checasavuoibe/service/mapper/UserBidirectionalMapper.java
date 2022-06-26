@@ -28,6 +28,5 @@ public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, Us
     @Mapping(source = "dto.postedAds", target = "postedAds")
     @Mapping(source = "dto.savedAds", target = "savedAds")
     @Mapping(source = "dto.postedReviews", target = "postedReviews")
-
     User toUpdateEntity(UserDto dto, User entity);
 }

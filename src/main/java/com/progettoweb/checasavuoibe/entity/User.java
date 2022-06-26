@@ -8,7 +8,6 @@ import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Table(name = "users")
@@ -66,7 +65,8 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "advertiser", fetch = FetchType.LAZY)
     private List<Advert> postedAds;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY) //TODO:A
+    @ManyToMany
+    @JoinTable(name = "saved_adverts", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "advert_id")})
     private List<Advert> savedAds;
 
     @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY)

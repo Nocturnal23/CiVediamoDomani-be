@@ -9,15 +9,15 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name = "categorys")
+@Table(name = "categories")
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class Category extends BaseEntity {
     @Id
-    @SequenceGenerator(sequenceName = "category_id_seq", allocationSize = 1, name = "category_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_id_seq")
+    @SequenceGenerator(sequenceName = "categories_id_seq", allocationSize = 1, name = "categories_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categories_id_seq")
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 

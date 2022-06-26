@@ -101,6 +101,6 @@ public class Advert extends BaseEntity {
     private String details;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "category_id")
     private Category category;
 }

@@ -66,9 +66,9 @@ public class User extends BaseEntity {
     @NonNull
     private String country;
 
-    @Column(name = "role")
+    @Column(name = "app_role")
     @NonNull
-    private Long role;
+    private Long appRole;
 
     @OneToMany(mappedBy = "advertiser", fetch = FetchType.LAZY)
     private List<Advert> postedAds;

@@ -33,7 +33,7 @@ public class UserDto extends BaseDto {
 
     private String country;
 
-    private Long role;
+    private Long appRole;
 
     private List<AdvertDto> postedAds;
 

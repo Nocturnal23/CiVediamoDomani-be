@@ -24,7 +24,7 @@ public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, Us
     @Mapping(source = "dto.documentId", target = "documentId")
     @Mapping(source = "dto.city", target = "city")
     @Mapping(source = "dto.country", target = "country")
-    @Mapping(source = "dto.role", target = "role")
+    @Mapping(source = "dto.appRole", target = "appRole")
     @Mapping(source = "dto.postedAds", target = "postedAds")
     @Mapping(source = "dto.savedAds", target = "savedAds")
     @Mapping(source = "dto.postedReviews", target = "postedReviews")

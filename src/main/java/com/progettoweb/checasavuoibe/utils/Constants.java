@@ -8,13 +8,8 @@ public class Constants {
         private Role() {
         }
 
-        public static final String AMMINISTRATORE = "Amministratore";
-        public static final String PRIVACY = "Privacy";
-        public static final String DELEGATO = "Delegato";
-        public static final String REFERENTE_PRIVACY = "Referente privacy";
-
-        public static final String COMPILATORE = "Compilatore";
-        public static final String DPO = "Dpo";
+        public static final Long AMMINISTRATORE = 1L;
+        public static final Long NORMAL = 2L;
     }
 
 

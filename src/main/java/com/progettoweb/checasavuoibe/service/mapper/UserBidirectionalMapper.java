@@ -20,8 +20,6 @@ public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, Us
     @Mapping(source = "dto.email", target = "email")
     @Mapping(source = "dto.phoneNum", target = "phoneNum")
     @Mapping(source = "dto.birthday", target = "birthday")
-    @Mapping(source = "dto.fiscalCode", target = "fiscalCode")
-    @Mapping(source = "dto.documentId", target = "documentId")
     @Mapping(source = "dto.city", target = "city")
     @Mapping(source = "dto.country", target = "country")
     @Mapping(source = "dto.appRole", target = "appRole")

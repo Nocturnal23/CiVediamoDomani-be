@@ -25,10 +25,6 @@ public class UserDto extends BaseDto {
 
     private LocalDate birthday;
 
-    private String fiscalCode;
-
-    private String documentId;
-
     private String city;
 
     private String country;

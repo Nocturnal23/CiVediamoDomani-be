@@ -47,23 +47,12 @@ public class User extends BaseEntity {
     private String phoneNum;
 
     @Column(name = "birthday")
-    @NonNull
     private LocalDate birthday;
 
-    @Column(name = "fiscal_code")
-    @NonNull
-    private String fiscalCode;
-
-    @Column(name = "document_id")
-    @NonNull
-    private String documentId;
-
     @Column(name = "city")
-    @NonNull
     private String city;
 
     @Column(name = "country")
-    @NonNull
     private String country;
 
     @Column(name = "app_role")

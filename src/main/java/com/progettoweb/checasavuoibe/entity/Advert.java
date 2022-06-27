@@ -42,8 +42,8 @@ public class Advert extends BaseEntity {
     @Column(name = "construction_year")
     private LocalDate constructionYear;
 
-    @Column(name = "condition")
-    private String condition;
+    @Column(name = "place_condition")
+    private String placeCondition;
 
     @Column(name = "floor")
     private int floor;
@@ -77,15 +77,14 @@ public class Advert extends BaseEntity {
     @NonNull
     private Long advType;
 
-    @Column(name = "seller")
+    @Column(name = "seller_type")
     @NonNull
-    private Long seller;
+    private Long sellerType;
 
     @Column(name = "parking")
     private Long parking;
 
     @Column(name = "media")
-    @NonNull
     private String media;
 
     @OneToMany(mappedBy = "recipient", fetch = FetchType.LAZY)
@@ -95,6 +94,7 @@ public class Advert extends BaseEntity {
     private Long heatingType;
 
     @Column(name = "energeticClass")
+    @NonNull
     private Long energeticClass;
 
     @Column(name = "details")

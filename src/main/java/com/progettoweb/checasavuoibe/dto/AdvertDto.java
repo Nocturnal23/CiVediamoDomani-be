@@ -24,7 +24,7 @@ public class AdvertDto extends BaseDto {
 
     private LocalDate constructionYear;
 
-    private String condition;
+    private String placeCondition;
 
     private int floor;
 
@@ -44,7 +44,7 @@ public class AdvertDto extends BaseDto {
 
     private Long advType;
 
-    private Long seller;
+    private Long sellerType;
 
     private Long parking;
 

@@ -21,10 +21,10 @@ public class Category extends BaseEntity {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "category_name")
     @NonNull
     private String name;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY) //TODO: Controllare si collega a order_id.
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Advert> adverts;
 }

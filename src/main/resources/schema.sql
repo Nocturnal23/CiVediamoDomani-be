@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS users(
     app_role numeric(2) not null
 );
 
-DROP TABLE IF EXISTS review;
-CREATE TABLE IF NOT EXISTS review(
+DROP TABLE IF EXISTS reviews;
+CREATE TABLE IF NOT EXISTS reviews(
     id serial primary key,
     created_date timestamp not null,
     modified_date timestamp not null,
@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS review(
     description varchar(50)
 );
 
-DROP TABLE IF EXISTS category;
-CREATE TABLE IF NOT EXISTS category(
+DROP TABLE IF EXISTS categories;
+CREATE TABLE IF NOT EXISTS categories(
     id serial primary key,
     created_date timestamp not null,
     modified_date timestamp not null,
@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS category(
     category_name varchar(50) not null
 );
 
-DROP TABLE IF EXISTS advert;
-CREATE TABLE IF NOT EXISTS advert(
+DROP TABLE IF EXISTS adverts;
+CREATE TABLE IF NOT EXISTS adverts(
     id serial primary key,
     created_date timestamp not null,
     modified_date timestamp not null,
@@ -52,18 +52,18 @@ CREATE TABLE IF NOT EXISTS advert(
     construction_year date,
     place_condition varchar(50),
     floor numeric(3),
-    square_meters double not null,
+    square_meters numeric(10) not null,
     no_locals numeric(3),
     no_bathrooms numeric(3),
     title varchar(50) not null,
     description varchar(255) not null,
-    price double not null,
-    discount_price double,
+    price numeric(10) not null,
+    discount_price numeric(10),
     adv_type numeric(2) not null,
     seller_type numeric(2) not null,
     parking varchar(50),
     media varchar(50),
     heating_type numeric(2),
-    energeticClass numeric(2) not null,
-    details varchar(55),
+    energetic_class numeric(2) not null,
+    details varchar(55)
 );

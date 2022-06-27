@@ -33,6 +33,5 @@ public class Review extends BaseEntity {
     private Long rating;
 
     @Column(name = "description")
-    @NonNull
     private String description;
 }

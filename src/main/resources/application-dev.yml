@@ -14,12 +14,12 @@ spring:
     #            required: true
     jpa:
         hibernate:
-            ddl-auto: none
+            ddl-auto: create
         database: postgresql
     datasource:
-        initialization-mode: always
-        platform: org.hibernate.dialect.PostgreSQLDialect
-        driver-class-name: org.postgresql.Driver
+#        initialization-mode: always
+#        platform: org.hibernate.dialect.PostgreSQLDialect
+#        driver-class-name: org.postgresql.Driver
         url: jdbc:postgresql://surus.db.elephantsql.com:5432/tihkejoo
         username: tihkejoo
         password: C2gTYUVsL3JBzOkxdSUmUFn79Jd82wrw

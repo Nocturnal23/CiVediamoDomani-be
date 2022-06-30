@@ -7,7 +7,7 @@ import com.progettoweb.checasavuoibe.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController extends ControllerTemplate<CategoryDto, CategoryCriteria, CategoryService> {
 
     public CategoryController(CategoryService service) {

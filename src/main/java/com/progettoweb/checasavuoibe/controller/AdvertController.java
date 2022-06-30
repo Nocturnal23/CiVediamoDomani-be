@@ -7,7 +7,7 @@ import com.progettoweb.checasavuoibe.service.AdvertService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/advert")
+@RequestMapping("/adverts")
 public class AdvertController extends ControllerTemplate<AdvertDto, AdvertCriteria, AdvertService> {
 
     public AdvertController(AdvertService service) {

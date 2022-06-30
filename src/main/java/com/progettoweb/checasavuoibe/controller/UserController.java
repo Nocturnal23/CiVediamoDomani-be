@@ -7,7 +7,7 @@ import com.progettoweb.checasavuoibe.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController extends ControllerTemplate<UserDto, UserCriteria, UserService> {
 
     public UserController(UserService service) {

@@ -1,7 +1,7 @@
 -- DROP SEQUENCE IF EXISTS users_id_seq;
 -- CREATE SEQUENCE users_id_seq;
 -- ALTER SEQUENCE idwebuser_id_seq OWNED BY webuser.idwebuser;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE IF NOT EXISTS users(
     id serial primary key,
     created_date timestamp not null,
@@ -19,19 +19,19 @@ CREATE TABLE IF NOT EXISTS users(
     app_role numeric(2) not null
 );
 
-DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS reviews CASCADE;
 CREATE TABLE IF NOT EXISTS reviews(
     id serial primary key,
     created_date timestamp not null,
     modified_date timestamp not null,
     deleted numeric(2) not null,
-    sender Integer not null,
+    sender_id Integer not null,
     recipient_id Integer not null,
     rating numeric(5) not null,
     description varchar(50)
 );
 
-DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS categories CASCADE;
 CREATE TABLE IF NOT EXISTS categories(
     id serial primary key,
     created_date timestamp not null,
@@ -40,12 +40,13 @@ CREATE TABLE IF NOT EXISTS categories(
     category_name varchar(50) not null
 );
 
-DROP TABLE IF EXISTS adverts;
+DROP TABLE IF EXISTS adverts CASCADE;
 CREATE TABLE IF NOT EXISTS adverts(
     id serial primary key,
     created_date timestamp not null,
     modified_date timestamp not null,
     deleted numeric(2) not null,
+    advertiser_id Integer not null,
     address varchar(50) not null,
     city varchar(50) not null,
     country varchar(50) not null,
@@ -65,5 +66,6 @@ CREATE TABLE IF NOT EXISTS adverts(
     media varchar(50),
     heating_type numeric(2),
     energetic_class numeric(2) not null,
-    details varchar(55)
+    details varchar(55),
+    category_id Integer not null
 );

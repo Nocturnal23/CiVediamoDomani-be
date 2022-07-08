@@ -21,6 +21,8 @@ public class UserDto extends BaseDto {
 
     private String email;
 
+    private String token;
+
     private String phoneNum;
 
     private LocalDate birthday;

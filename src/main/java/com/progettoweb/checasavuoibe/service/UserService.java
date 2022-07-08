@@ -9,6 +9,8 @@ import com.progettoweb.checasavuoibe.repository.specification.UserSpecificationB
 import com.progettoweb.checasavuoibe.service.mapper.UserBidirectionalMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService extends ServiceTemplate<User, UserDto, UserCriteria,
         UserSpecificationBuilder, UserBidirectionalMapper, UserRepository> {
@@ -24,5 +26,9 @@ public class UserService extends ServiceTemplate<User, UserDto, UserCriteria,
     @Override
     public String getEntityName() {
         return User.class.getSimpleName();
+    }
+
+    public Optional<User> findByEmail(String email) {
+        return repository.findByEmailIgnoreCase(email);
     }
 }

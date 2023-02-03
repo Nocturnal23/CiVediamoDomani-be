@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.progettoweb</groupId>
-    <artifactId>checasavuoi-be</artifactId>
+    <artifactId>civediamodomani-be</artifactId>
     <version>0.0.4</version>
     <packaging>war</packaging>
-    <name>checasavuoi-be</name>
-    <description>checasavuoi-be</description>
+    <name>civediamodomani-be</name>
+    <description>civediamodomani-be</description>
 
     <properties>
         <java.version>1.8</java.version>

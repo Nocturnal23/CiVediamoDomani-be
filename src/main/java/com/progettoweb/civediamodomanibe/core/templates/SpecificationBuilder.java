@@ -3,6 +3,8 @@ package com.progettoweb.civediamodomanibe.core.templates;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public abstract class SpecificationBuilder<E extends BaseEntity, C extends BaseCriteria> {
@@ -32,30 +34,23 @@ public abstract class SpecificationBuilder<E extends BaseEntity, C extends BaseC
                     }));
         }
 
+        if(criteria.getStartingDate() != null && !criteria.getStartingDate().equals("")){
+            LocalDateTime startingDate = LocalDateTime.parse(criteria.getStartingDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            specification = Objects.requireNonNull(specification).and(
+                    (((root, criteriaQuery, criteriaBuilder) ->
+                            criteriaBuilder.greaterThanOrEqualTo(root.get("createdDate"), startingDate)))
+            );
+        }
+
+        if(criteria.getEndingDate() != null && !criteria.getEndingDate().equals("")){
+            LocalDateTime endingDate = LocalDateTime.parse(criteria.getEndingDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            specification = Objects.requireNonNull(specification).and(
+                    (((root, criteriaQuery, criteriaBuilder) ->
+                            criteriaBuilder.lessThanOrEqualTo(root.get("createdDate"), endingDate)))
+            );
+        }
+
         return specification;
-    }
-
-    public Specification<E> buildSpecification() {
-        return Specification.where(null);
-    }
-
-
-    protected <T> Specification<E> equalsSpecification(String fieldName, T value) {
-        return (root, query, builder) -> builder.equal(root.get(fieldName), value);
-    }
-
-    protected <T> Specification<E> equalsSpecification(Long fieldName, T value) {
-        return (root, query, builder) -> builder.equal(root.get(String.valueOf(fieldName)), value);
-    }
-
-    protected Specification<E> likeUpperSpecification(String fieldName, String value) {
-        return (root, query, builder) ->
-                builder.like(builder.upper(root.get(fieldName)), wrapLikeQuery(value));
-    }
-
-    protected Specification<E> likeLowerSpecification(String fieldName, String value) {
-        return (root, query, builder) ->
-                builder.like(builder.lower(root.get(fieldName)), wrapLikeQuery(value));
     }
 
     protected static String wrapLikeQuery(String txt) {

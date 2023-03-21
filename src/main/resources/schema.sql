@@ -19,18 +19,6 @@ CREATE TABLE IF NOT EXISTS users(
     app_role numeric(2) not null
 );
 
-DROP TABLE IF EXISTS reviews CASCADE;
-CREATE TABLE IF NOT EXISTS reviews(
-    id serial primary key,
-    created_date timestamp not null,
-    modified_date timestamp not null,
-    deleted numeric(2) not null,
-    sender_id Integer not null,
-    recipient_id Integer not null,
-    rating numeric(5) not null,
-    description varchar(50)
-);
-
 DROP TABLE IF EXISTS categories CASCADE;
 CREATE TABLE IF NOT EXISTS categories(
     id serial primary key,

@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.nio.CharBuffer;
 
 @RequiredArgsConstructor
@@ -37,10 +37,10 @@ public class AuthenticationService {
         User user = userService.findByEmail(credentialsDto.getEmail())
                 .orElseThrow(() -> new RestrictedActionException(HttpStatus.NOT_FOUND.name() + "User not found"));
 
-        if (passwordEncoder.matches(CharBuffer.wrap(credentialsDto.getPassword()), user.getPasswordDigest())) {
-            log.debug("User {} authenticated correctly", credentialsDto.getEmail());
-            return userService.getMapper().toDto(user);
-        }
+//        if (passwordEncoder.matches(CharBuffer.wrap(credentialsDto.getPassword()), user.getPasswordDigest())) {
+//            log.debug("User {} authenticated correctly", credentialsDto.getEmail());
+//            return userService.getMapper().toDto(user);
+//        }
         throw new RestrictedActionException(HttpStatus.BAD_REQUEST.name() + "Invalid password");
     }
 
@@ -51,8 +51,8 @@ public class AuthenticationService {
     }
 
     public UserDto signIn(UserDto user) {
-        user.setToken(userAuthenticationProvider.createToken(user.getEmail()));
-        return user; //TODO Da sistemare
+//        user.setToken(userAuthenticationProvider.createToken(user.getEmail()));
+        return null; //TODO Da sistemare
     }
 
     public void signOut(UserDto user) {

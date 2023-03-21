@@ -6,8 +6,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
 
-import javax.persistence.*;
-import java.util.List;
+import jakarta.persistence.*;
 
 @Table(name = "categories")
 @Entity

@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 @AllArgsConstructor
 public abstract class ControllerTemplate<
         D extends BaseDto,

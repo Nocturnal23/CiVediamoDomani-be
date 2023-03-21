@@ -1,6 +1,6 @@
-package com.progettoweb.civediamodomanibe.config.authfilters;
+package com.progettoweb.civediamodomanibe.core.config.authfilters;
 
-import com.progettoweb.civediamodomanibe.config.UserAuthenticationProvider;
+import com.progettoweb.civediamodomanibe.core.config.UserAuthenticationProvider;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;

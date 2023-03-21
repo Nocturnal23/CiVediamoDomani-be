@@ -1,7 +1,7 @@
-package com.progettoweb.civediamodomanibe.config.authfilters;
+package com.progettoweb.civediamodomanibe.core.config.authfilters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.progettoweb.civediamodomanibe.config.UserAuthenticationProvider;
+import com.progettoweb.civediamodomanibe.core.config.UserAuthenticationProvider;
 import com.progettoweb.civediamodomanibe.dtorequest.CredentialsDto;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.core.context.SecurityContextHolder;

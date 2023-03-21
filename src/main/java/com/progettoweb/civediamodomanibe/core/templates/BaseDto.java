@@ -1,4 +1,4 @@
-package com.progettoweb.civediamodomanibe.commons;
+package com.progettoweb.civediamodomanibe.core.templates;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -1,6 +1,6 @@
 package com.progettoweb.civediamodomanibe.repository.specification;
 
-import com.progettoweb.civediamodomanibe.commons.SpecificationBuilder;
+import com.progettoweb.civediamodomanibe.core.templates.SpecificationBuilder;
 import com.progettoweb.civediamodomanibe.entity.Category;
 import com.progettoweb.civediamodomanibe.repository.criteria.CategoryCriteria;
 import org.springframework.data.jpa.domain.Specification;

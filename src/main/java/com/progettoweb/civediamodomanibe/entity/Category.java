@@ -1,6 +1,6 @@
 package com.progettoweb.civediamodomanibe.entity;
 
-import com.progettoweb.civediamodomanibe.commons.BaseEntity;
+import com.progettoweb.civediamodomanibe.core.templates.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -18,13 +18,14 @@ public class Category extends BaseEntity {
     @Id
     @SequenceGenerator(sequenceName = "categories_id_seq", allocationSize = 1, name = "categories_id_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categories_id_seq")
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "category_id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "category_name")
+    @Column(name = "name")
     @NonNull
     private String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    private List<Advert> adverts;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @NonNull
+    private Category father;
 }

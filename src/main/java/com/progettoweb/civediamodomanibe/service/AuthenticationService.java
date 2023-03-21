@@ -1,10 +1,10 @@
 package com.progettoweb.civediamodomanibe.service;
 
-import com.progettoweb.civediamodomanibe.config.UserAuthenticationProvider;
+import com.progettoweb.civediamodomanibe.core.config.UserAuthenticationProvider;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.dtorequest.CredentialsDto;
 import com.progettoweb.civediamodomanibe.entity.User;
-import com.progettoweb.civediamodomanibe.exception.RestrictedActionException;
+import com.progettoweb.civediamodomanibe.core.exception.RestrictedActionException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

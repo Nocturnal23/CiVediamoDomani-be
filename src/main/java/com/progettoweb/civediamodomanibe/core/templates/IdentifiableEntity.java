@@ -1,4 +1,4 @@
-package com.progettoweb.civediamodomanibe.commons;
+package com.progettoweb.civediamodomanibe.core.templates;
 
 public interface IdentifiableEntity {
 

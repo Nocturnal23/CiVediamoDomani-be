@@ -1,4 +1,4 @@
-package com.progettoweb.civediamodomanibe.exception;
+package com.progettoweb.civediamodomanibe.core.exception;
 
 public class RestrictedActionException extends RuntimeException {
 

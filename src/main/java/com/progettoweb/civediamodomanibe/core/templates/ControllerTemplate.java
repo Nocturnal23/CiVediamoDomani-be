@@ -1,4 +1,4 @@
-package com.progettoweb.civediamodomanibe.commons;
+package com.progettoweb.civediamodomanibe.core.templates;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;

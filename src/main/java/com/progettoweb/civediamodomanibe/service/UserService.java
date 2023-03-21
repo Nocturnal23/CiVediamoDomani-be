@@ -1,6 +1,6 @@
 package com.progettoweb.civediamodomanibe.service;
 
-import com.progettoweb.civediamodomanibe.commons.ServiceTemplate;
+import com.progettoweb.civediamodomanibe.core.templates.ServiceTemplate;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.entity.User;
 import com.progettoweb.civediamodomanibe.repository.UserRepository;

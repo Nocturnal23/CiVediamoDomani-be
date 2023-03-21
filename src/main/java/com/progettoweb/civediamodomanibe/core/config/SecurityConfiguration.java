@@ -1,9 +1,9 @@
-package com.progettoweb.civediamodomanibe.config;
+package com.progettoweb.civediamodomanibe.core.config;
 
 import com.google.common.collect.ImmutableList;
-import com.progettoweb.civediamodomanibe.config.authfilters.JwtAuthFilter;
-import com.progettoweb.civediamodomanibe.config.authfilters.UsernamePasswordAuthFilter;
-import com.progettoweb.civediamodomanibe.utils.Constants;
+import com.progettoweb.civediamodomanibe.core.config.authfilters.JwtAuthFilter;
+import com.progettoweb.civediamodomanibe.core.config.authfilters.UsernamePasswordAuthFilter;
+import com.progettoweb.civediamodomanibe.core.utils.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

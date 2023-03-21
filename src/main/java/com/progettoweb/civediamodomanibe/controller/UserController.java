@@ -1,6 +1,6 @@
 package com.progettoweb.civediamodomanibe.controller;
 
-import com.progettoweb.civediamodomanibe.commons.ControllerTemplate;
+import com.progettoweb.civediamodomanibe.core.templates.ControllerTemplate;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.repository.criteria.UserCriteria;
 import com.progettoweb.civediamodomanibe.service.UserService;

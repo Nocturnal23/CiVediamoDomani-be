@@ -1,6 +1,6 @@
 package com.progettoweb.civediamodomanibe.controller;
 
-import com.progettoweb.civediamodomanibe.commons.ControllerTemplate;
+import com.progettoweb.civediamodomanibe.core.templates.ControllerTemplate;
 import com.progettoweb.civediamodomanibe.dto.CategoryDto;
 import com.progettoweb.civediamodomanibe.repository.criteria.CategoryCriteria;
 import com.progettoweb.civediamodomanibe.service.CategoryService;

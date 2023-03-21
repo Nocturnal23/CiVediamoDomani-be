@@ -1,4 +1,4 @@
-package com.progettoweb.civediamodomanibe.utils;
+package com.progettoweb.civediamodomanibe.core.utils;
 
 public class Constants {
     private Constants() {

@@ -1,8 +1,8 @@
-package com.progettoweb.civediamodomanibe.commons;
+package com.progettoweb.civediamodomanibe.core.templates;
 
-import com.progettoweb.civediamodomanibe.exception.RestrictedActionException;
+import com.progettoweb.civediamodomanibe.core.exception.RestrictedActionException;
 import com.progettoweb.civediamodomanibe.service.UserService;
-import com.progettoweb.civediamodomanibe.utils.Constants;
+import com.progettoweb.civediamodomanibe.core.utils.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

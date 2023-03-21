@@ -1,6 +1,6 @@
 package com.progettoweb.civediamodomanibe.repository;
 
-import com.progettoweb.civediamodomanibe.commons.BaseJpaRepository;
+import com.progettoweb.civediamodomanibe.core.templates.BaseJpaRepository;
 import com.progettoweb.civediamodomanibe.entity.User;
 import org.springframework.stereotype.Repository;
 

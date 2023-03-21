@@ -1,4 +1,4 @@
-package com.progettoweb.civediamodomanibe.commons;
+package com.progettoweb.civediamodomanibe.core.templates;
 
 import lombok.Data;
 import org.springframework.data.domain.Sort;

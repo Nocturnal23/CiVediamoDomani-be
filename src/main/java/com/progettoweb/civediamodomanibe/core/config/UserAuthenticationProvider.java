@@ -1,4 +1,4 @@
-package com.progettoweb.civediamodomanibe.config;
+package com.progettoweb.civediamodomanibe.core.config;
 
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.dtorequest.CredentialsDto;

@@ -1,6 +1,6 @@
 package com.progettoweb.civediamodomanibe.service;
 
-import com.progettoweb.civediamodomanibe.commons.ServiceTemplate;
+import com.progettoweb.civediamodomanibe.core.templates.ServiceTemplate;
 import com.progettoweb.civediamodomanibe.dto.CategoryDto;
 import com.progettoweb.civediamodomanibe.entity.Category;
 import com.progettoweb.civediamodomanibe.repository.CategoryRepository;

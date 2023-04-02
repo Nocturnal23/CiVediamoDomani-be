@@ -1,6 +1,7 @@
 package com.progettoweb.civediamodomanibe.entity;
 
 import com.progettoweb.civediamodomanibe.core.templates.BaseEntity;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User extends BaseEntity {
+@AllArgsConstructor
+public class UserAccount extends BaseEntity {
     @Id
     @SequenceGenerator(sequenceName = "users_id_seq", allocationSize = 1, name = "users_id_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
@@ -60,4 +62,5 @@ public class User extends BaseEntity {
     @ManyToMany
     @JoinTable(name = "user_categories", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "event_id")})
     private List<Category> categories;
+
 }

@@ -2,14 +2,14 @@ package com.progettoweb.civediamodomanibe.service.mapper;
 
 import com.progettoweb.civediamodomanibe.core.templates.BidirectionalMapper;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
-import com.progettoweb.civediamodomanibe.entity.User;
+import com.progettoweb.civediamodomanibe.entity.UserAccount;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring",
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         uses = {EventBidirectionalMapper.class, CategoryBidirectionalMapper.class})
-public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, User> {
+public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, UserAccount> {
 
     @Override
     @Mapping(source = "entity.id", target = "id")
@@ -25,5 +25,5 @@ public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, Us
     @Mapping(source = "dto.favorites", target = "favorites")
     @Mapping(source = "dto.attendes", target = "attendes")
     @Mapping(source = "dto.categories", target = "categories")
-    User toUpdateEntity(UserDto dto, User entity);
+    UserAccount toUpdateEntity(UserDto dto, UserAccount entity);
 }

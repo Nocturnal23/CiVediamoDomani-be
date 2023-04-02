@@ -24,7 +24,7 @@ public class Event extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organiser_id")
-    private User organiser;
+    private UserAccount organiser;
 
     @Column(name = "title")
     @NonNull
@@ -57,10 +57,10 @@ public class Event extends BaseEntity {
     @ManyToMany
     @JoinTable(name = "event_attendes", joinColumns = {@JoinColumn(name = "event_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
-    private List<User> attendees;
+    private List<UserAccount> attendees;
 
     @ManyToMany
     @JoinTable(name = "user_favorites", joinColumns = {@JoinColumn(name = "event_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
-    private List<User> followers;
+    private List<UserAccount> followers;
 }

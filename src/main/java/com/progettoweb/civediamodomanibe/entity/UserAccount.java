@@ -24,17 +24,12 @@ public class UserAccount extends BaseEntity {
     @Column(name = "user_id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "username")
-    @NonNull
-    private String username;
-
-    @Column(name = "password")
-    @NonNull
-    private String password;
-
     @Column(name = "email")
     @NonNull
     private String email;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "first_name")
     @NonNull

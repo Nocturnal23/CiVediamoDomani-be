@@ -20,9 +20,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserAccount userAccount = userRepository.findByUsername(username);
-        if(userAccount != null) return new User(username, userAccount.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_USER")));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        UserAccount userAccount = userRepository.findByEmailIgnoreCase(email);
+        if(userAccount != null) return new User(email, userAccount.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_USER")));
         throw new UsernameNotFoundException("User not found");
     }
 }

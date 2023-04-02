@@ -21,7 +21,6 @@ public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, Us
     @Mapping(source = "entity.id", target = "id")
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "modifiedDate", ignore = true)
-    @Mapping(source = "dto.username", target = "username")
     @Mapping(target = "password", ignore = true)
     @Mapping(target = "email", ignore = true)
     @Mapping(source = "dto.firstName", target = "firstName")

@@ -9,7 +9,6 @@ import com.progettoweb.civediamodomanibe.repository.specification.UserSpecificat
 import com.progettoweb.civediamodomanibe.service.mapper.UserBidirectionalMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 public class UserService extends ServiceTemplate<UserAccount, UserDto, UserCriteria,
@@ -28,7 +27,7 @@ public class UserService extends ServiceTemplate<UserAccount, UserDto, UserCrite
         return UserAccount.class.getSimpleName();
     }
 
-    public Optional<UserAccount> findByEmail(String email) {
+    public UserAccount findByEmail(String email) {
         return repository.findByEmailIgnoreCase(email);
     }
 }

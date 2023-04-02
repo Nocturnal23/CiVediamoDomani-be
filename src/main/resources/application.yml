@@ -17,8 +17,3 @@ spring:
         active: dev
 server:
     port: 8095
-
-security:
-    jwt:
-        token:
-            secret-key: "my-secret-key"

@@ -56,7 +56,7 @@ public class UserAccount extends BaseEntity {
     private List<Event> favorites;
 
     @ManyToMany
-    @JoinTable(name = "event_attendes", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "event_id")})
+    @JoinTable(name = "event_attendees", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "event_id")})
     private List<Event> attendes;
 
     @ManyToMany

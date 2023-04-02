@@ -29,8 +29,8 @@ public abstract class ServiceTemplate<
     protected final M mapper;
     protected final S specificationBuilder;
 
-    @Autowired
-    protected UserService userService;
+//    @Autowired
+//    protected UserService userService;
 
     protected ServiceTemplate(
             @NonNull R repository,

@@ -1,0 +1,11 @@
+POST http://localhost:8095/users/register
+Content-Type: application/x-www-form-urlencoded
+
+username=Alex&password=test
+
+###
+GET http://localhost:8095/users/1
+Authorization: Basic QWxleDp0ZXN0
+
+###
+

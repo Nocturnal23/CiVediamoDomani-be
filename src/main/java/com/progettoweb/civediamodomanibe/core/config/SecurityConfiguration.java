@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder(12);
+        return new BCryptPasswordEncoder();
     }
 
 //    @Override
@@ -43,7 +43,12 @@ public class SecurityConfiguration {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests().requestMatchers("/api/v1/register", "/api/v1/authenticate").permitAll().and().
-                authorizeHttpRequests().anyRequest().authenticated().and().httpBasic().and().csrf().disable().build();
+                .authorizeHttpRequests().requestMatchers("/api/v1/register", "/api/v1/authenticate").permitAll()
+                .and().authorizeHttpRequests((auth) -> auth
+                        .requestMatchers("/users/**").permitAll())
+                .httpBasic()
+                .and().authorizeHttpRequests().anyRequest().authenticated()
+                .and().csrf().disable()
+                .build();
     }
 }

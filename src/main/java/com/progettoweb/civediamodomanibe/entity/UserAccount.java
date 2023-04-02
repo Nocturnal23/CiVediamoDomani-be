@@ -57,7 +57,7 @@ public class UserAccount extends BaseEntity {
 
     @ManyToMany
     @JoinTable(name = "event_attendees", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "event_id")})
-    private List<Event> attendes;
+    private List<Event> attending;
 
     @ManyToMany
     @JoinTable(name = "user_categories", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "event_id")})

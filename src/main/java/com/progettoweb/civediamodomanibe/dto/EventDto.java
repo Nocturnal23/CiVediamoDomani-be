@@ -30,7 +30,7 @@ public class EventDto extends BaseDto {
 
     private List<CategoryDto> categories;
 
-    private List<UserDto> attendees;
+    private int attendees;
 
-    private List<UserDto> followers;
+    private int followers;
 }

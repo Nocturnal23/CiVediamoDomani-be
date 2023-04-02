@@ -25,11 +25,11 @@ public class UserDto extends BaseDto {
 
     private Long appRole;
 
-    private List<EventDto> organisedEvents;
+    private int organisedEvents;
 
-    private List<EventDto> favorites;
+    private int favorites;
 
-    private List<EventDto> attendes;
+    private int attending;
 
     private List<CategoryDto> categories;
 }

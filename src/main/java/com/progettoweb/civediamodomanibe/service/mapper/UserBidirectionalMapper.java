@@ -12,18 +12,30 @@ import org.mapstruct.*;
 public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, UserAccount> {
 
     @Override
+    @Mapping(target = "organisedEvents", expression = "java(entity.getOrganisedEvents() == null ? 0 : entity.getOrganisedEvents().size())")
+    @Mapping(target = "favorites", expression = "java(entity.getFavorites() == null ? 0 : entity.getFavorites().size())")
+    @Mapping(target = "attending", expression = "java(entity.getAttending() == null ? 0 : entity.getAttending().size())")
+    UserDto toDto(UserAccount entity);
+
+    @Override
     @Mapping(source = "entity.id", target = "id")
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "modifiedDate", ignore = true)
     @Mapping(source = "dto.username", target = "username")
-    @Mapping(source = "dto.password", target = "password")
-    @Mapping(source = "dto.email", target = "email")
+    @Mapping(target = "password", ignore = true)
+    @Mapping(target = "email", ignore = true)
     @Mapping(source = "dto.firstName", target = "firstName")
     @Mapping(source = "dto.lastName", target = "lastName")
     @Mapping(source = "dto.appRole", target = "appRole")
-    @Mapping(source = "dto.organisedEvents", target = "organisedEvents")
-    @Mapping(source = "dto.favorites", target = "favorites")
-    @Mapping(source = "dto.attendes", target = "attendes")
+    @Mapping(target = "organisedEvents", ignore = true)
+    @Mapping(target = "favorites", ignore = true)
+    @Mapping(target = "attending", ignore = true)
     @Mapping(source = "dto.categories", target = "categories")
     UserAccount toUpdateEntity(UserDto dto, UserAccount entity);
+
+    @Override
+    @Mapping(target = "organisedEvents", ignore = true)
+    @Mapping(target = "favorites", ignore = true)
+    @Mapping(target = "attending", ignore = true)
+    UserAccount toEntity(UserDto dto);
 }

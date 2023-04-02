@@ -28,17 +28,4 @@ public class UserController extends ControllerTemplate<UserDto, UserCriteria, Us
     public String helloWorld() {
         return "UserController works!";
     }
-
-    @PostMapping(path="/register")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> register(@RequestParam("username") String username, @RequestParam("password") String password) {
-        if(userRepository.findByUsername(username) != null)
-            return new ResponseEntity<>("existing username", HttpStatus.CONFLICT);
-        UserAccount userAccount = new UserAccount();
-        userAccount.setUsername(username);
-        userAccount.setPassword(passwordEncoder.encode(password));
-        userAccount.setDeleted(0L);
-        userRepository.save(userAccount);
-        return new ResponseEntity<>("registered", HttpStatus.OK);
-    }
 }

@@ -1,11 +1,25 @@
+POST http://localhost:8095/v1/signUp
+Content-Type: application/json
+
+{
+  "email": "test@signup.com",
+  "password": "testjson",
+  "firstName": "Alessio",
+  "lastName": "Juju",
+  "appRole": "1"
+}
+
+###
 POST http://localhost:8095/users/register
 Content-Type: application/x-www-form-urlencoded
 
 username=Alex&password=test
 
 ###
-GET http://localhost:8095/users/1
-Authorization: Basic QWxleDp0ZXN0
+GET http://localhost:8095/users/2
+Authorization: Basic alex@mail.com:test
 
 ###
+
+
 

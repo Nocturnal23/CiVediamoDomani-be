@@ -43,7 +43,7 @@ public class SecurityConfiguration {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests().requestMatchers("/api/v1/register", "/api/v1/authenticate").permitAll()
+                .authorizeHttpRequests().requestMatchers("/v1/signUp", "/api/v1/authenticate").permitAll()
                 .and().authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/users/**").permitAll())
                 .httpBasic()

@@ -16,9 +16,11 @@ spring:
         hibernate:
             ddl-auto: none
         database: postgresql
+    sql:
+        init:
+            mode:
+            platform: org.hibernate.dialect.PostgreSQLDialect
     datasource:
-        initialization-mode: always
-        platform: org.hibernate.dialect.PostgreSQLDialect
         driver-class-name: org.postgresql.Driver
         url: jdbc:postgresql://surus.db.elephantsql.com:5432/tihkejoo
         username: tihkejoo

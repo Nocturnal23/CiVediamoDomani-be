@@ -1,6 +1,7 @@
 package com.progettoweb.civediamodomanibe.controller;
 
 import com.progettoweb.civediamodomanibe.dto.UserDto;
+import com.progettoweb.civediamodomanibe.dtorequest.CredentialsDto;
 import com.progettoweb.civediamodomanibe.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,10 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
 
-    @PostMapping("/signIn")
-    public ResponseEntity<UserDto> signIn(@AuthenticationPrincipal UserDto user) {
-        return new ResponseEntity<>(authenticationService.signIn(user), HttpStatus.OK);
-    }
+//    @PostMapping("/signIn")
+//    public ResponseEntity<UserDto> signIn(@AuthenticationPrincipal CredentialsDto credentials) {
+//        return new ResponseEntity<>(authenticationService.signIn(credentials), HttpStatus.OK);
+//    }
 
     @PostMapping("/signUp")
     public ResponseEntity<UserDto> signUp(@RequestBody UserDto user) {

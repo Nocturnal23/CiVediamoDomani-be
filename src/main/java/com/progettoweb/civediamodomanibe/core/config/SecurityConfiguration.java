@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -43,12 +44,13 @@ public class SecurityConfiguration {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests().requestMatchers("/v1/signUp", "/api/v1/authenticate").permitAll()
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().authorizeHttpRequests().requestMatchers("/v1/signUp", "/api/v1/authenticate").permitAll()
                 .and().authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/users/**").permitAll())
                 .httpBasic()
                 .and().authorizeHttpRequests().anyRequest().authenticated()
-                .and().csrf().disable()
-                .build();
+                .and().build();
     }
 }

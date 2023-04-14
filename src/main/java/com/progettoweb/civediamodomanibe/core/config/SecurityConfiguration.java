@@ -2,6 +2,8 @@ package com.progettoweb.civediamodomanibe.core.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -15,6 +17,11 @@ public class SecurityConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
 //    @Override
@@ -49,7 +56,7 @@ public class SecurityConfiguration {
                 .and().authorizeHttpRequests().requestMatchers("/v1/signUp", "/api/v1/authenticate").permitAll()
                 .and().authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/users/**").permitAll())
-                .httpBasic()
+                .addFilterBefore()
                 .and().authorizeHttpRequests().anyRequest().authenticated()
                 .and().build();
     }

@@ -1,11 +1,17 @@
 package com.progettoweb.civediamodomanibe.service;
 
+import com.nimbusds.jose.JOSEException;
+import com.progettoweb.civediamodomanibe.core.config.TokenManager;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.dtorequest.CredentialsDto;
 import com.progettoweb.civediamodomanibe.entity.UserAccount;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,6 +19,8 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 
 import java.nio.CharBuffer;
+import java.util.Arrays;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
@@ -24,6 +32,10 @@ public class AuthenticationService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
 
 //    @Transactional
 //    public UserDto authenticate(CredentialsDto credentialsDto) {
@@ -47,13 +59,24 @@ public class AuthenticationService {
         return userService.save(user);
     }
 
-//    public UserDto signIn(CredentialsDto credentials) {
-//        UserAccount user = userService.findByEmail(credentials.getEmail());
-//        if( user == null || passwordEncoder.matches(CharBuffer.wrap(credentials.getPassword()), user.getPassword()) )
-//            throw new RuntimeException("Credential not valid.");
-//
-//        SecurityContextHolder.getContext().setAuthentication();
-//    }
+    public String signIn(CredentialsDto credentials) {
+        UserAccount user = userService.findByEmail(credentials.getEmail());
+        if( user == null || passwordEncoder.matches(CharBuffer.wrap(credentials.getPassword()), user.getPassword()) )
+            throw new RuntimeException("Credential not valid.");
+
+        //SecurityContextHolder.getContext().setAuthentication();
+
+        String email = credentials.getEmail();
+        String password = Arrays.toString(credentials.getPassword());
+
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+        try {
+            return TokenManager.getInstance().createToken(Map.of("email",  email));
+        } catch (JOSEException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
+    }
 
     public void signOut(UserDto user) {
         SecurityContextHolder.clearContext();

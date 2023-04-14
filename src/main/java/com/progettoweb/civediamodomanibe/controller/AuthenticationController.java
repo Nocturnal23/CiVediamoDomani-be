@@ -3,15 +3,14 @@ package com.progettoweb.civediamodomanibe.controller;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.dtorequest.CredentialsDto;
 import com.progettoweb.civediamodomanibe.service.AuthenticationService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -21,10 +20,13 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
 
-//    @PostMapping("/signIn")
-//    public ResponseEntity<UserDto> signIn(@AuthenticationPrincipal CredentialsDto credentials) {
-//        return new ResponseEntity<>(authenticationService.signIn(credentials), HttpStatus.OK);
-//    }
+    @PostMapping("/signIn")
+    @ResponseStatus(HttpStatus.OK)
+    public void signIn(@RequestBody CredentialsDto credentials, HttpServletResponse response) {
+        response.addHeader(HttpHeaders.AUTHORIZATION, authenticationService.signIn(credentials));
+
+        //return new ResponseEntity<>(authenticationService.signIn(credentials), HttpStatus.OK);
+    }
 
     @PostMapping("/signUp")
     public ResponseEntity<UserDto> signUp(@RequestBody UserDto user) {

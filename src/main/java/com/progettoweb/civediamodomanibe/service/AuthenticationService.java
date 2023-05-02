@@ -2,6 +2,7 @@ package com.progettoweb.civediamodomanibe.service;
 
 import com.nimbusds.jose.JOSEException;
 import com.progettoweb.civediamodomanibe.core.config.TokenManager;
+import com.progettoweb.civediamodomanibe.core.utils.Constants;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.dtorequest.CredentialsDto;
 import com.progettoweb.civediamodomanibe.entity.UserAccount;
@@ -56,6 +57,7 @@ public class AuthenticationService {
             throw new RuntimeException("Email already registered!");
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setAppRole(Constants.Role.NORMAL);
         return userService.save(user);
     }
 

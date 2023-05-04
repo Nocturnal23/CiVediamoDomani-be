@@ -22,7 +22,7 @@ public class AuthenticationController {
 
     @PostMapping("/signIn")
     @ResponseStatus(HttpStatus.OK)
-    public void signIn(@RequestBody CredentialsDto credentials, HttpServletResponse response) {
+    public void signIn(@RequestBody UserDto credentials, HttpServletResponse response) {
         response.addHeader(HttpHeaders.AUTHORIZATION, authenticationService.signIn(credentials));
 
         //return new ResponseEntity<>(authenticationService.signIn(credentials), HttpStatus.OK);

@@ -61,15 +61,15 @@ public class AuthenticationService {
         return userService.save(user);
     }
 
-    public String signIn(CredentialsDto credentials) {
+    public String signIn(UserDto credentials) {
         UserAccount user = userService.findByEmail(credentials.getEmail());
-        if( user == null || passwordEncoder.matches(CharBuffer.wrap(credentials.getPassword()), user.getPassword()) )
+        if( user == null || passwordEncoder.matches(credentials.getPassword(), user.getPassword()) )
             throw new RuntimeException("Credential not valid.");
 
         //SecurityContextHolder.getContext().setAuthentication();
 
         String email = credentials.getEmail();
-        String password = Arrays.toString(credentials.getPassword());
+        String password = credentials.getPassword();
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         try {

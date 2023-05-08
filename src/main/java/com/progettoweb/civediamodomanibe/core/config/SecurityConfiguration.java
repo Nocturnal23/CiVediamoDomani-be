@@ -1,5 +1,6 @@
 package com.progettoweb.civediamodomanibe.core.config;
 
+import com.progettoweb.civediamodomanibe.core.utils.Constants.Endpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -65,7 +66,9 @@ public class SecurityConfiguration {
                         .requestMatchers("/swagger-resources/**").permitAll()
                         .requestMatchers("/v3/api-docs/**").permitAll()
                         .requestMatchers("/v1/signUp", "/api/v1/authenticate", "/oauth/**").permitAll()
-                        .requestMatchers("/users/**").permitAll())
+                        .requestMatchers(Endpoint.Users + "/**").permitAll()
+                        .requestMatchers(Endpoint.Events + "/**").permitAll()
+                        .requestMatchers(Endpoint.Categories + "/**").permitAll())
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests().anyRequest().authenticated()
                 .and().build();

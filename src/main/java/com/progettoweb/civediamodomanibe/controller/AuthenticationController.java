@@ -1,5 +1,6 @@
 package com.progettoweb.civediamodomanibe.controller;
 
+import com.progettoweb.civediamodomanibe.core.utils.Constants.Endpoint;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.dtorequest.CredentialsDto;
 import com.progettoweb.civediamodomanibe.service.AuthenticationService;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/v1")
+@RequestMapping(Endpoint.Authtentication)
 public class AuthenticationController {
 
     @Autowired

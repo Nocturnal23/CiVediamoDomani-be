@@ -1,6 +1,7 @@
 package com.progettoweb.civediamodomanibe.controller;
 
 import com.progettoweb.civediamodomanibe.core.templates.ControllerTemplate;
+import com.progettoweb.civediamodomanibe.core.utils.Constants.Endpoint;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.entity.UserAccount;
 import com.progettoweb.civediamodomanibe.repository.UserRepository;
@@ -12,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping(Endpoint.Users)
 public class UserController extends ControllerTemplate<UserDto, UserCriteria, UserService> {
 
     private final UserRepository userRepository;

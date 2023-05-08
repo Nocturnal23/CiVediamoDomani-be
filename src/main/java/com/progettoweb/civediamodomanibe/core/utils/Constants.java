@@ -87,4 +87,11 @@ public class Constants {
             return this.error_message;
         }
     }
+
+    public static class Endpoint {
+        public static final String Users = "/users";
+        public static final String Events = "/events";
+        public static final String Categories = "/categories";
+        public static final String Authtentication = "/v1";
+    }
 }

@@ -66,6 +66,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/swagger-resources/**").permitAll()
                         .requestMatchers("/v3/api-docs/**").permitAll()
                         .requestMatchers("/v1/signUp", "/api/v1/authenticate", "/oauth/**").permitAll()
+                        .requestMatchers("/v1/signIn").permitAll()
                         .requestMatchers(Endpoint.Users + "/**").permitAll()
                         .requestMatchers(Endpoint.Events + "/**").permitAll()
                         .requestMatchers(Endpoint.Categories + "/**").permitAll())

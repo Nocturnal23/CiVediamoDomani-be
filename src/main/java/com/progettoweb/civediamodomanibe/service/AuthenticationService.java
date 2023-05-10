@@ -63,7 +63,7 @@ public class AuthenticationService {
 
     public String signIn(UserDto credentials) {
         UserAccount user = userService.findByEmail(credentials.getEmail());
-        if( user == null || passwordEncoder.matches(credentials.getPassword(), user.getPassword()) )
+        if( user == null || !passwordEncoder.matches(credentials.getPassword(), user.getPassword()) )
             throw new RuntimeException("Credential not valid.");
 
         //SecurityContextHolder.getContext().setAuthentication();

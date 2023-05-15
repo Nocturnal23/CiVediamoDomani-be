@@ -61,10 +61,10 @@ public class AuthenticationService {
         return userService.save(user);
     }
 
-    public String signIn(UserDto credentials) {
+    public UserDto signIn(UserDto credentials, HttpServletResponse response) {
         UserAccount user = userService.findByEmail(credentials.getEmail());
         if( user == null || !passwordEncoder.matches(credentials.getPassword(), user.getPassword()) )
-            throw new RuntimeException("Credential not valid.");
+            throw new RuntimeException("Credentials not valid.");
 
         //SecurityContextHolder.getContext().setAuthentication();
 
@@ -73,11 +73,11 @@ public class AuthenticationService {
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         try {
-            return TokenManager.getInstance().createToken(Map.of("email",  email));
+            response.addHeader(HttpHeaders.AUTHORIZATION, TokenManager.getInstance().createToken(Map.of("email",  email)));
+            return userService.getMapper().toDto(user);
         } catch (JOSEException e) {
             throw new RuntimeException(e.getMessage());
         }
-
     }
 
     public void signOut(UserDto user) {

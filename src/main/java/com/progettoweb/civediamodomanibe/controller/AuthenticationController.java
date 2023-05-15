@@ -22,11 +22,8 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping("/signIn")
-    @ResponseStatus(HttpStatus.OK)
-    public void signIn(@RequestBody UserDto credentials, HttpServletResponse response) {
-        response.addHeader(HttpHeaders.AUTHORIZATION, authenticationService.signIn(credentials));
-
-        //return new ResponseEntity<>(authenticationService.signIn(credentials), HttpStatus.OK);
+    public ResponseEntity<UserDto> signIn(@RequestBody UserDto credentials, HttpServletResponse response) {
+        return new ResponseEntity<>(authenticationService.signIn(credentials, response), HttpStatus.OK);
     }
 
     @PostMapping("/signUp")

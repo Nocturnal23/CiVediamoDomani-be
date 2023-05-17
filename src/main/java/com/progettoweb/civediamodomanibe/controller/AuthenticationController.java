@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(Endpoint.Authtentication)
+@RequestMapping(Endpoint.Authentication)
 public class AuthenticationController {
 
     @Autowired

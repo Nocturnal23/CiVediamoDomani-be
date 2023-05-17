@@ -92,6 +92,6 @@ public class Constants {
         public static final String Users = "/users";
         public static final String Events = "/events";
         public static final String Categories = "/categories";
-        public static final String Authtentication = "/v1";
+        public static final String Authentication = "/v1";
     }
 }

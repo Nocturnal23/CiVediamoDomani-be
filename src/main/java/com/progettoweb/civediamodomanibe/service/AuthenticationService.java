@@ -3,6 +3,7 @@ package com.progettoweb.civediamodomanibe.service;
 import com.nimbusds.jose.JOSEException;
 import com.progettoweb.civediamodomanibe.core.config.TokenManager;
 import com.progettoweb.civediamodomanibe.core.utils.Constants;
+import com.progettoweb.civediamodomanibe.dto.SocialUserDto;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.dtorequest.CredentialsDto;
 import com.progettoweb.civediamodomanibe.entity.UserAccount;
@@ -66,8 +67,6 @@ public class AuthenticationService {
         if( user == null || !passwordEncoder.matches(credentials.getPassword(), user.getPassword()) )
             throw new RuntimeException("Credentials not valid.");
 
-        //SecurityContextHolder.getContext().setAuthentication();
-
         String email = credentials.getEmail();
         String password = credentials.getPassword();
 
@@ -82,5 +81,9 @@ public class AuthenticationService {
 
     public void signOut(UserDto user) {
         SecurityContextHolder.clearContext();
+    }
+
+    public UserDto googleSignIn(SocialUserDto user) {
+        return null;
     }
 }

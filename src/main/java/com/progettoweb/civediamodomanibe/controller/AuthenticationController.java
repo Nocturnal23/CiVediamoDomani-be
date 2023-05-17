@@ -1,6 +1,7 @@
 package com.progettoweb.civediamodomanibe.controller;
 
 import com.progettoweb.civediamodomanibe.core.utils.Constants.Endpoint;
+import com.progettoweb.civediamodomanibe.dto.SocialUserDto;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.dtorequest.CredentialsDto;
 import com.progettoweb.civediamodomanibe.service.AuthenticationService;
@@ -29,6 +30,11 @@ public class AuthenticationController {
     @PostMapping("/signUp")
     public ResponseEntity<UserDto> signUp(@RequestBody UserDto user) {
         return new ResponseEntity<>(authenticationService.signUp(user), HttpStatus.OK);
+    }
+
+    @PostMapping("/googleSignIn")
+    public ResponseEntity<UserDto> googleSignIn(@RequestBody SocialUserDto user) {
+        return new ResponseEntity<>(authenticationService.googleSignIn(user), HttpStatus.OK);
     }
 
 //    @PostMapping("/signOut")

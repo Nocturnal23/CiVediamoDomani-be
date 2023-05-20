@@ -74,8 +74,12 @@ public abstract class ServiceTemplate<
 
     public D save(@NotNull D dto) {
         E entity = mapper.toEntity(dto);
+        return mapper.toDto(save(entity));
+    }
+
+    public E save(@NotNull E entity) {
         entity.setDeleted(Constants.Boolean.FALSE);
-        return mapper.toDto(repository.save(entity));
+        return repository.save(entity);
     }
 
     public D update(@NotNull D dto, Long id) {

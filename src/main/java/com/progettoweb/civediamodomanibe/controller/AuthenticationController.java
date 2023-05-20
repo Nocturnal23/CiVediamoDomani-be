@@ -33,8 +33,8 @@ public class AuthenticationController {
     }
 
     @PostMapping("/googleSignIn")
-    public ResponseEntity<UserDto> googleSignIn(@RequestBody SocialUserDto user) {
-        return new ResponseEntity<>(authenticationService.googleSignIn(user), HttpStatus.OK);
+    public ResponseEntity<UserDto> googleSignIn(@RequestBody SocialUserDto user, HttpServletResponse response) {
+        return new ResponseEntity<>(authenticationService.googleSignIn(user, response), HttpStatus.OK);
     }
 
 //    @PostMapping("/signOut")

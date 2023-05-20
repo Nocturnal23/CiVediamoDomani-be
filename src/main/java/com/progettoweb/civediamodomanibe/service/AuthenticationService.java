@@ -70,7 +70,7 @@ public class AuthenticationService {
         String email = credentials.getEmail();
         String password = credentials.getPassword();
 
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+        //authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         try {
             response.addHeader(HttpHeaders.AUTHORIZATION, TokenManager.getInstance().createToken(Map.of("email",  email)));
             return userService.getMapper().toDto(user);
@@ -83,7 +83,22 @@ public class AuthenticationService {
         SecurityContextHolder.clearContext();
     }
 
-    public UserDto googleSignIn(SocialUserDto user) {
-        return null;
+    public UserDto googleSignIn(SocialUserDto socialUserDto, HttpServletResponse response) {
+        UserAccount userAccount = userService.findByEmail(socialUserDto.getEmail());
+        if( userAccount == null ) {
+            userAccount = new UserAccount();
+            userAccount.setEmail(socialUserDto.getEmail());
+            userAccount.setFirstName(socialUserDto.getFirstName());
+            userAccount.setLastName(socialUserDto.getLastName());
+            userAccount.setAppRole(Constants.Role.NORMAL);
+            userService.save(userAccount);
+        }
+
+        try {
+            response.addHeader(HttpHeaders.AUTHORIZATION, TokenManager.getInstance().createToken(Map.of("email",  socialUserDto.getEmail())));
+            return userService.getMapper().toDto(userAccount);
+        } catch (JOSEException e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }

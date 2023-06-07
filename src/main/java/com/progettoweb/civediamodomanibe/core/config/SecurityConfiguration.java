@@ -68,9 +68,9 @@ public class SecurityConfiguration {
                         .requestMatchers("/swagger-resources/**").permitAll()
                         .requestMatchers("/v3/api-docs/**").permitAll()
                         .requestMatchers(Endpoint.Authentication + "/**", "/api/v1/authenticate", "/oauth/**").permitAll()
-                        .requestMatchers(Endpoint.Users + "/**").permitAll()
-                        .requestMatchers(Endpoint.Events + "/**").permitAll()
-                        .requestMatchers(Endpoint.Categories + "/**").permitAll())
+                        .requestMatchers(Endpoint.Users, Endpoint.Users + "/**").permitAll()
+                        .requestMatchers(Endpoint.Events, Endpoint.Events + "/**").permitAll()
+                        .requestMatchers(Endpoint.Categories, Endpoint.Categories + "/**").permitAll())
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests().anyRequest().authenticated()
                 .and().build();

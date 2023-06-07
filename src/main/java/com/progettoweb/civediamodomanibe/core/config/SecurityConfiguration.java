@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -69,7 +70,10 @@ public class SecurityConfiguration {
                         .requestMatchers("/v3/api-docs/**").permitAll()
                         .requestMatchers(Endpoint.Authentication + "/**", "/api/v1/authenticate", "/oauth/**").permitAll()
                         .requestMatchers(Endpoint.Users, Endpoint.Users + "/**").permitAll()
-                        .requestMatchers(Endpoint.Events, Endpoint.Events + "/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, Endpoint.Events, Endpoint.Events + "/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, Endpoint.Events, Endpoint.Events + "/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, Endpoint.Events, Endpoint.Events + "/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, Endpoint.Events, Endpoint.Events + "/**").permitAll()
                         .requestMatchers(Endpoint.Categories, Endpoint.Categories + "/**").permitAll())
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests().anyRequest().authenticated()

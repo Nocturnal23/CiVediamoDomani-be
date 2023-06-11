@@ -36,10 +36,4 @@ public class AuthenticationController {
     public ResponseEntity<UserDto> googleSignIn(@RequestBody SocialUserDto user, HttpServletResponse response) {
         return new ResponseEntity<>(authenticationService.googleSignIn(user, response), HttpStatus.OK);
     }
-
-//    @PostMapping("/signOut")
-//    public ResponseEntity<Void> signOut(@AuthenticationPrincipal UserDto user) {
-//        authenticationService.signOut(user);
-//        return ResponseEntity.noContent().build();
-//    }
 }

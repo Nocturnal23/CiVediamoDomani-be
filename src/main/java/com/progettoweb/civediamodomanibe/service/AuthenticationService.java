@@ -58,8 +58,7 @@ public class AuthenticationService {
             throw new RuntimeException("Email already registered!");
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setAppRole(Constants.Role.NORMAL);
-        return userService.save(user);
+        return userService.registerUser(user);
     }
 
     public UserDto signIn(UserDto credentials, HttpServletResponse response) {
@@ -85,18 +84,16 @@ public class AuthenticationService {
 
     public UserDto googleSignIn(SocialUserDto socialUserDto, HttpServletResponse response) {
         UserAccount userAccount = userService.findByEmail(socialUserDto.getEmail());
+        UserDto registeredUser;
         if( userAccount == null ) {
-            userAccount = new UserAccount();
-            userAccount.setEmail(socialUserDto.getEmail());
-            userAccount.setFirstName(socialUserDto.getFirstName());
-            userAccount.setLastName(socialUserDto.getLastName());
-            userAccount.setAppRole(Constants.Role.NORMAL);
-            userService.save(userAccount);
+            registeredUser = userService.registerUser(socialUserDto);
+        } else {
+            registeredUser = userService.getMapper().toDto(userAccount);
         }
 
         try {
             response.addHeader(HttpHeaders.AUTHORIZATION, TokenManager.getInstance().createToken(Map.of("email",  socialUserDto.getEmail())));
-            return userService.getMapper().toDto(userAccount);
+            return registeredUser;
         } catch (JOSEException e) {
             throw new RuntimeException(e.getMessage());
         }

@@ -30,6 +30,7 @@ public interface EventBidirectionalMapper extends BidirectionalMapper<EventDto, 
     @Mapping(source = "dto.categories", target = "categories")
     @Mapping(target = "attendees", ignore = true)
     @Mapping(target = "followers", ignore = true)
+    @Mapping(source = "dto.url", target = "url")
     Event toUpdateEntity(EventDto dto, Event entity);
 
     @Override

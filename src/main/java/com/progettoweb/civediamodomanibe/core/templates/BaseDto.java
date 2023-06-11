@@ -26,4 +26,6 @@ public abstract class BaseDto {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime modifiedDate;
+
+    private String url;
 }

@@ -16,5 +16,6 @@ public interface CategoryBidirectionalMapper extends BidirectionalMapper<Categor
     @Mapping(target = "modifiedDate", ignore = true)
     @Mapping(source = "dto.name", target = "name")
     @Mapping(source = "dto.father", target = "father")
+    @Mapping(source = "dto.url", target = "url")
     Category toUpdateEntity(CategoryDto dto, Category entity);
 }

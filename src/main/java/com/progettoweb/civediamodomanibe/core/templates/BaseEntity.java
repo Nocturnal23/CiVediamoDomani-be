@@ -7,6 +7,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import org.springframework.lang.NonNull;
+
 import java.time.LocalDateTime;
 
 @MappedSuperclass
@@ -24,5 +26,9 @@ public abstract class BaseEntity implements IdentifiableEntity {
 
     @Column(name = "deleted", nullable = false)
     protected Long deleted;
+
+    @Column(name = "url")
+    @NonNull
+    protected String url;
 
 }

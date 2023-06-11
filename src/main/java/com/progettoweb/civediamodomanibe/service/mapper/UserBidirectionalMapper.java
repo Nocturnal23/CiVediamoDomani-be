@@ -30,6 +30,7 @@ public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, Us
     @Mapping(target = "favorites", ignore = true)
     @Mapping(target = "attending", ignore = true)
     @Mapping(source = "dto.categories", target = "categories")
+    @Mapping(source = "dto.url", target = "url")
     UserAccount toUpdateEntity(UserDto dto, UserAccount entity);
 
     @Override

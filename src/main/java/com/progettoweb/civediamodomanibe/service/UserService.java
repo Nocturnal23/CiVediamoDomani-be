@@ -36,7 +36,7 @@ public class UserService extends ServiceTemplate<UserAccount, UserDto, UserCrite
 
     public UserDto registerUser (UserDto newUser) {
         newUser.setAppRole(Constants.Role.NORMAL);
-        newUser.setUrl(Utils.generateString(6L));
+        newUser.setUrl(Utils.generateString(8L));
         return save(newUser);
     }
 

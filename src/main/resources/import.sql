@@ -1,1 +1,1 @@
--- insert into USERS (ID, CREATED_DATE, MODIFIED_DATE, DELETED, FIRST_NAME, LAST_NAME) values (USERS_ID_SEQ.nextval, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, 'Admin', 'Admin');
+INSERT INTO users (user_id, created_date, modified_date, deleted, url, app_role, email, first_name, last_name, password) values (USERS_ID_SEQ.nextval, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, 'admin', 1, 'admin@admin', 'Admin', 'Admin', '$2a$10$wEzruOhCiFvEvb/wo8W.zOWLvmm.u42OkkJyd4Q7IQ1CcMC1uUvaK');

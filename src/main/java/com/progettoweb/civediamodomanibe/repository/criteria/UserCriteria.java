@@ -9,4 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserCriteria extends BaseCriteria {
+    private String firstNameSearch;
+    private String lastNameSearch;
 }

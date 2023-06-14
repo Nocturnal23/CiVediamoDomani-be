@@ -108,6 +108,10 @@ public abstract class ServiceTemplate<
         return mapper.toDto(getEntity(id));
     }
 
+    public E getDto(String url) {
+        return repository.findByUrl(url).orElseThrow(() -> new RestrictedActionException("Non trovato!"));
+    }
+
 //    public UserDto getCurrentUserDto() {
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        if (authentication != null && !(authentication instanceof AnonymousAuthenticationToken)) {

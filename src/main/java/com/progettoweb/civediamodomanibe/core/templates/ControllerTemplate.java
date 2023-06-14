@@ -31,6 +31,11 @@ public abstract class ControllerTemplate<
         return new ResponseEntity<>(service.getDto(id), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{url}")
+    public ResponseEntity<Object> findByUrl(@PathVariable String url) {
+        return new ResponseEntity<>(service.getDto(url), HttpStatus.OK);
+    }
+
     @PutMapping(value = "/{id}")
     public ResponseEntity<Object> update(@NotNull @RequestBody D dto,
                                          @PathVariable Long id) {

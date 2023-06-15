@@ -2,6 +2,7 @@ package com.progettoweb.civediamodomanibe.service;
 
 import com.nimbusds.jose.JOSEException;
 import com.progettoweb.civediamodomanibe.core.config.TokenManager;
+import com.progettoweb.civediamodomanibe.core.utils.Constants;
 import com.progettoweb.civediamodomanibe.dto.SocialUserDto;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.entity.UserAccount;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
@@ -42,7 +44,7 @@ public class AuthenticationService {
 
     public UserDto signIn(UserDto credentials, HttpServletResponse response) {
         UserAccount user = userService.findByEmail(credentials.getEmail());
-        if( user == null || !passwordEncoder.matches(credentials.getPassword(), user.getPassword()) )
+        if( user == null || !passwordEncoder.matches(credentials.getPassword(), user.getPassword()) || Objects.equals(user.getDeleted(), Constants.Boolean.TRUE) )
             throw new RuntimeException("Credentials not valid.");
 
         String email = credentials.getEmail();
@@ -63,6 +65,9 @@ public class AuthenticationService {
         if( userAccount == null ) {
             registeredUser = userService.registerUser(socialUserDto);
         } else {
+            if (Objects.equals(userAccount.getDeleted(), Constants.Boolean.TRUE))
+                throw new RuntimeException("Credentials not valid.");
+
             registeredUser = userService.getMapper().toDto(userAccount);
         }
 

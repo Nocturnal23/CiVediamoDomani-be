@@ -13,14 +13,6 @@ public class Constants {
     }
 
 
-    public static class UserStatus {
-        public static final String ABILITATO = "ABILITATO";
-        public static final String DISABILITATO = "DISABILITATO";
-
-        private UserStatus() {
-        }
-    }
-
     public static class Boolean {
         public static final Long TRUE = 1L;
         public static final Long FALSE = 0L;

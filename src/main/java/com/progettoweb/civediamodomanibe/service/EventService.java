@@ -19,11 +19,6 @@ public class EventService extends ServiceTemplate<Event, EventDto, EventCriteria
     }
 
     @Override
-    protected boolean eligibleToDelete(Long id) {
-        return false;
-    }
-
-    @Override
     public String getEntityName() {
         return Event.class.getSimpleName();
     }

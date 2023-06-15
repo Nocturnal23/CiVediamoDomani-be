@@ -91,9 +91,6 @@ public abstract class ServiceTemplate<
     }
 
     public void delete(Long id) {
-        if (!eligibleToDelete(id)) {
-            throw new RestrictedActionException(Constants.DeleteErrorTemplate.ENTITY_DELETE_RESTRICTED.getMessage(), getEntityName(), id);
-        }
         E entity = getEntity(id);
         entity.setDeleted(Constants.Boolean.TRUE);
         repository.save(entity);
@@ -129,8 +126,6 @@ public abstract class ServiceTemplate<
 //            throw new SecurityException("Permesso negato");
 //        }
 //    }
-
-    protected abstract boolean eligibleToDelete(Long id);
 
     public abstract String getEntityName();
 

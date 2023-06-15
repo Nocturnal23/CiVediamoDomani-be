@@ -21,11 +21,6 @@ public class UserService extends ServiceTemplate<UserAccount, UserDto, UserCrite
     }
 
     @Override
-    protected boolean eligibleToDelete(Long id) {
-        return false;
-    }
-
-    @Override
     public String getEntityName() {
         return UserAccount.class.getSimpleName();
     }

@@ -19,11 +19,6 @@ public class CategoryService extends ServiceTemplate<Category, CategoryDto, Cate
     }
 
     @Override
-    protected boolean eligibleToDelete(Long id) {
-        return false;
-    }
-
-    @Override
     public String getEntityName() {
         return Category.class.getSimpleName();
     }

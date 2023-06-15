@@ -1,10 +1,8 @@
 package com.progettoweb.civediamodomanibe.core.templates;
 
 import com.progettoweb.civediamodomanibe.core.exception.RestrictedActionException;
-import com.progettoweb.civediamodomanibe.service.UserService;
 import com.progettoweb.civediamodomanibe.core.utils.Constants;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -90,8 +88,8 @@ public abstract class ServiceTemplate<
 
     }
 
-    public void delete(Long id) {
-        E entity = getEntity(id);
+    public void delete(String url) {
+        E entity = getEntity(url);
         entity.setDeleted(Constants.Boolean.TRUE);
         repository.save(entity);
     }
@@ -105,8 +103,12 @@ public abstract class ServiceTemplate<
         return mapper.toDto(getEntity(id));
     }
 
-    public E getDto(String url) {
+    public E getEntity(String url) {
         return repository.findByUrl(url).orElseThrow(() -> new RestrictedActionException("Non trovato!"));
+    }
+
+    public BaseDto getDto(String url) {
+        return mapper.toDto(getEntity(url));
     }
 
 //    public UserDto getCurrentUserDto() {

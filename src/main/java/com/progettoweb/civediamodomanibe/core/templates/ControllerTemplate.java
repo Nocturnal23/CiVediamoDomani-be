@@ -42,9 +42,9 @@ public abstract class ControllerTemplate<
         return new ResponseEntity<>(service.update(dto, id), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        service.delete(id);
+    @DeleteMapping(value = "/{url}")
+    public ResponseEntity<Void> delete(@PathVariable String url) {
+        service.delete(url);
         return ResponseEntity.noContent().build();
     }
 }

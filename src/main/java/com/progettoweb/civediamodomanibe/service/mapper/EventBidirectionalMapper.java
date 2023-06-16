@@ -18,6 +18,7 @@ public interface EventBidirectionalMapper extends BidirectionalMapper<EventDto, 
 
     @Override
     @Mapping(source = "entity.id", target = "id")
+    @Mapping(source = "entity.deleted", target = "deleted")
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "modifiedDate", ignore = true)
     @Mapping(target = "organiser", ignore = true)

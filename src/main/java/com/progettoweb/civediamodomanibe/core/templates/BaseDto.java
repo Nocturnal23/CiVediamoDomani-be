@@ -27,5 +27,7 @@ public abstract class BaseDto {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime modifiedDate;
 
+    private Long deleted;
+
     private String url;
 }

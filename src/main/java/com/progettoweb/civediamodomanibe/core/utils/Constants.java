@@ -1,12 +1,8 @@
 package com.progettoweb.civediamodomanibe.core.utils;
 
 public class Constants {
-    private Constants() {
-    }
 
     public static class Role {
-        private Role() {
-        }
 
         public static final Long AMMINISTRATORE = 1L;
         public static final Long NORMAL = 2L;
@@ -16,9 +12,6 @@ public class Constants {
     public static class Boolean {
         public static final Long TRUE = 1L;
         public static final Long FALSE = 0L;
-
-        private Boolean() {
-        }
     }
 
     public enum SaveErrorTemplate {

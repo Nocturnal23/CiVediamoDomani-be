@@ -24,6 +24,9 @@ public class UserAccount extends BaseEntity {
     @Column(name = "user_id", nullable = false, unique = true)
     private Long id;
 
+    @Column(name = "deleted", nullable = false)
+    private String state;
+
     @Column(name = "email")
     @NonNull
     private String email;

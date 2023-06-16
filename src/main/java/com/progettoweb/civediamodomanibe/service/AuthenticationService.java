@@ -17,7 +17,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
@@ -44,7 +43,7 @@ public class AuthenticationService {
 
     public UserDto signIn(UserDto credentials, HttpServletResponse response) {
         UserAccount user = userService.findByEmail(credentials.getEmail());
-        if( user == null || !passwordEncoder.matches(credentials.getPassword(), user.getPassword()) || Objects.equals(user.getDeleted(), Constants.Boolean.TRUE) )
+        if( user == null || !passwordEncoder.matches(credentials.getPassword(), user.getPassword()) || user.getState().equals(Constants.UserState.DISABLED) )
             throw new RuntimeException("Credentials not valid.");
 
         String email = credentials.getEmail();
@@ -65,7 +64,7 @@ public class AuthenticationService {
         if( userAccount == null ) {
             registeredUser = userService.registerUser(socialUserDto);
         } else {
-            if (Objects.equals(userAccount.getDeleted(), Constants.Boolean.TRUE))
+            if (userAccount.getState().equals(Constants.UserState.DISABLED))
                 throw new RuntimeException("Credentials not valid.");
 
             registeredUser = userService.getMapper().toDto(userAccount);

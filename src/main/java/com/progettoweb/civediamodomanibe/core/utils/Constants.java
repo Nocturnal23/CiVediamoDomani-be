@@ -14,6 +14,11 @@ public class Constants {
         public static final Long FALSE = 0L;
     }
 
+    public static class UserState {
+        public static final String DISABLED = "DISABILITATO";
+        public static final String ENABLED = "ATTIVO";
+    }
+
     public enum SaveErrorTemplate {
         ENTITY_ALREADY_EXIST("Impossibile salvare: un oggetto %s è già esistente per i parametri: %s."),
         ENTITY_MISSING_DATA("Impossibile salvare: valorizzare tutti i campi obbligatori!"),

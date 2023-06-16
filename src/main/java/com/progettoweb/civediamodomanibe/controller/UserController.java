@@ -25,8 +25,8 @@ public class UserController extends ControllerTemplate<UserDto, UserCriteria, Us
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/hello")
-    public String helloWorld() {
-        return "UserController works!";
+    @PutMapping("/disable/{url}")
+    public ResponseEntity<UserDto> disableUser(@PathVariable String url) {
+        return new ResponseEntity<>(service.disableUser(url), HttpStatus.OK);
     }
 }

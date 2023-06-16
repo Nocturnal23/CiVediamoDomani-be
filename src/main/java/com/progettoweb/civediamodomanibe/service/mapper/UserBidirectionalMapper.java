@@ -20,6 +20,7 @@ public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, Us
     @Override
     @Mapping(source = "entity.id", target = "id")
     @Mapping(source = "entity.deleted", target = "deleted")
+    @Mapping(source = "entity.state", target = "state")
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "modifiedDate", ignore = true)
     @Mapping(target = "password", ignore = true)

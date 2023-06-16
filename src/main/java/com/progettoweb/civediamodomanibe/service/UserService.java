@@ -32,6 +32,7 @@ public class UserService extends ServiceTemplate<UserAccount, UserDto, UserCrite
     public UserDto registerUser (UserDto newUser) {
         newUser.setAppRole(Constants.Role.NORMAL);
         newUser.setUrl(Utils.generateString(8L));
+        newUser.setState(Constants.UserState.ENABLED);
         return save(newUser);
     }
 
@@ -41,5 +42,11 @@ public class UserService extends ServiceTemplate<UserAccount, UserDto, UserCrite
         user.setFirstName(newUser.getFirstName());
         user.setLastName(newUser.getLastName());
         return registerUser(user);
+    }
+
+    public UserDto disableUser (String url) {
+        UserAccount entity = getEntity(url);
+        entity.setState(Constants.UserState.DISABLED);
+        return mapper.toDto(repository.save(entity));
     }
 }

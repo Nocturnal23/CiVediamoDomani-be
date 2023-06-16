@@ -13,6 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 public class UserDto extends BaseDto {
 
+    private String state;
+
     private String email;
 
     private String password;

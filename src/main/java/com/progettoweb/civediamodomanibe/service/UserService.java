@@ -49,4 +49,10 @@ public class UserService extends ServiceTemplate<UserAccount, UserDto, UserCrite
         entity.setState(Constants.UserState.DISABLED);
         return mapper.toDto(repository.save(entity));
     }
+
+    public UserDto enableUser (String url) {
+        UserAccount entity = getEntity(url);
+        entity.setState(Constants.UserState.ENABLED);
+        return mapper.toDto(repository.save(entity));
+    }
 }

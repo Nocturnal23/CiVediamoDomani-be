@@ -29,4 +29,9 @@ public class UserController extends ControllerTemplate<UserDto, UserCriteria, Us
     public ResponseEntity<UserDto> disableUser(@PathVariable String url) {
         return new ResponseEntity<>(service.disableUser(url), HttpStatus.OK);
     }
+
+    @PutMapping("/enable/{url}")
+    public ResponseEntity<UserDto> enableUser(@PathVariable String url) {
+        return new ResponseEntity<>(service.enableUser(url), HttpStatus.OK);
+    }
 }

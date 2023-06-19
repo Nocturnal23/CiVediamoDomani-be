@@ -16,10 +16,11 @@ public class EventSpecificationBuilder extends SpecificationBuilder<Event, Event
 
         if( criteria.getSearchValue() != null ) {
             specification = Objects.requireNonNull(specification).and(
-                    ((root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("title"), "%"+criteria.getSearchValue()+"%"))
+                    ((root, query, criteriaBuilder) ->
+                            criteriaBuilder.like(criteriaBuilder.lower(root.get("title")), "%" + criteria.getSearchValue().toLowerCase() + "%"))
             );
         }
 
         return specification;
     }
-}
+} 

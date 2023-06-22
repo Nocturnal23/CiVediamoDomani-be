@@ -10,4 +10,7 @@ import lombok.Setter;
 @Setter
 public class EventCriteria extends BaseCriteria {
     private String searchValue;
+    private Long organiserId;
+    private Long followerId;
+    private Long attendeeId;
 }

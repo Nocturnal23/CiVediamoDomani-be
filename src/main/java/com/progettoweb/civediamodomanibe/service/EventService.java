@@ -24,8 +24,8 @@ public class EventService extends ServiceTemplate<Event, EventDto, EventCriteria
     }
 
     @Override
-    public Event save(@NotNull Event entity) {
-        entity.setUrl(Utils.generateString(8L));
-        return super.save(entity);
+    public EventDto save(@NotNull EventDto eventDto) {
+        eventDto.setUrl(Utils.generateString(8L));
+        return super.save(eventDto);
     }
 }

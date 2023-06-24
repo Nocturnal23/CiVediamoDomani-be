@@ -34,4 +34,9 @@ public class UserController extends ControllerTemplate<UserDto, UserCriteria, Us
     public ResponseEntity<UserDto> enableUser(@PathVariable String url) {
         return new ResponseEntity<>(service.enableUser(url), HttpStatus.OK);
     }
+
+    @PutMapping("/{userUrl}/setFavorite/{eventUrl}")
+    public ResponseEntity<Boolean> setFavorite(@PathVariable String userUrl, @PathVariable String eventUrl) {
+        return new ResponseEntity<>(service.setEventPreferred(userUrl, eventUrl), HttpStatus.OK);
+    }
 }

@@ -37,10 +37,10 @@ public abstract class ControllerTemplate<
         return new ResponseEntity<>(service.getDto(url), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{url}")
     public ResponseEntity<Object> update(@NotNull @RequestBody D dto,
-                                         @PathVariable Long id) {
-        return new ResponseEntity<>(service.update(dto, id), HttpStatus.OK);
+                                         @PathVariable String url) {
+        return new ResponseEntity<>(service.update(dto, url), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{url}")

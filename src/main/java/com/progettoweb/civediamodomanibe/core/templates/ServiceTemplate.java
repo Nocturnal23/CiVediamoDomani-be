@@ -80,8 +80,8 @@ public abstract class ServiceTemplate<
         return repository.save(entity);
     }
 
-    public D update(@NotNull D dto, Long id) {
-        E entityFromDb = getEntity(id);
+    public D update(@NotNull D dto, String url) {
+        E entityFromDb = getEntity(url);
         E updatedEntity = mapper.toUpdateEntity(dto, entityFromDb);
         E savedEntity = repository.save(updatedEntity);
         return mapper.toDto(savedEntity);

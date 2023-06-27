@@ -25,6 +25,5 @@ public class Category extends BaseEntity {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @NonNull
     private Category father;
 }

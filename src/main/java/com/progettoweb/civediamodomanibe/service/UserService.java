@@ -98,4 +98,39 @@ public class UserService extends ServiceTemplate<UserAccount, UserDto, UserCrite
 
         return eventFound;
     }
+
+    public Boolean setAttendEvent(String userUrl, String eventUrl) {
+        UserAccount user = getEntity(userUrl);
+        List<Event> attending = user.getAttending();
+        UserAccount savedUser;
+        boolean eventFound = attending.stream().anyMatch( eventElem -> eventElem.getUrl().equals(eventUrl) );
+        int originalSize = attending.size();
+
+        if (eventFound) {
+            //Removing event from attending
+            boolean removed = attending.removeIf(eventElem -> eventElem.getUrl().equals(eventUrl));
+
+            if (removed) {
+                user.setAttending(attending);
+                savedUser = save(user);
+                eventFound = savedUser.getAttending().stream().anyMatch( eventElem -> eventElem.getUrl().equals(eventUrl) );
+            }
+
+            if (!removed || eventFound || attending.size() == originalSize) {
+                throw new RuntimeException("Errore nella rimozione dell'evento dai partecipati.");
+            }
+        } else {
+            //Adding event to attending
+            boolean added = attending.add(eventService.getEntity(eventUrl));
+            user.setAttending(attending);
+            savedUser = save(user);
+
+            eventFound = savedUser.getAttending().stream().anyMatch( eventElem -> eventElem.getUrl().equals(eventUrl) );
+            if (!added || !eventFound || attending.size() == originalSize) {
+                throw new RuntimeException("Errore nell'aggiunta dell'evento ai partecipati.");
+            }
+        }
+
+        return eventFound;
+    }
 }

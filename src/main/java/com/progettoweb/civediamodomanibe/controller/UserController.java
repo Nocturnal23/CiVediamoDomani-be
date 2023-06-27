@@ -39,4 +39,9 @@ public class UserController extends ControllerTemplate<UserDto, UserCriteria, Us
     public ResponseEntity<Boolean> setFavorite(@PathVariable String userUrl, @PathVariable String eventUrl) {
         return new ResponseEntity<>(service.setEventPreferred(userUrl, eventUrl), HttpStatus.OK);
     }
+
+    @PutMapping("/{userUrl}/setAttend/{eventUrl}")
+    public ResponseEntity<Boolean> setAttend(@PathVariable String userUrl, @PathVariable String eventUrl) {
+        return new ResponseEntity<>(service.setAttendEvent(userUrl, eventUrl), HttpStatus.OK);
+    }
 }

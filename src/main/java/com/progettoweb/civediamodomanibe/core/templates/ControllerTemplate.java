@@ -1,5 +1,6 @@
 package com.progettoweb.civediamodomanibe.core.templates;
 
+import com.progettoweb.civediamodomanibe.dto.CategoryDto;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -43,8 +44,12 @@ public abstract class ControllerTemplate<
     }
 
     @DeleteMapping(value = "/{url}")
-    public ResponseEntity<Void> delete(@PathVariable String url) {
-        service.delete(url);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Object> delete(@PathVariable String url) {
+        return new ResponseEntity<>(service.delete(url), HttpStatus.OK);
+    }
+
+    @PutMapping("/record/{url}")
+    public ResponseEntity<Object> record(@PathVariable String url) {
+        return new ResponseEntity<>(service.record(url), HttpStatus.OK);
     }
 }

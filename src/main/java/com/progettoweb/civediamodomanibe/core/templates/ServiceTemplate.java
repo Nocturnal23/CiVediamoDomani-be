@@ -88,10 +88,16 @@ public abstract class ServiceTemplate<
 
     }
 
-    public void delete(String url) {
+    public D delete(String url) {
         E entity = getEntity(url);
         entity.setDeleted(Constants.Boolean.TRUE);
-        repository.save(entity);
+        return mapper.toDto( repository.save(entity) );
+    }
+
+    public D record (String url) {
+        E entity = getEntity(url);
+        entity.setDeleted(Constants.Boolean.FALSE);
+        return mapper.toDto(repository.save(entity));
     }
 
     public E getEntity(Long id) {

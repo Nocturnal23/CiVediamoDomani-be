@@ -9,4 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CategoryCriteria extends BaseCriteria {
+    private Long fatherID;
+    private String childCategorySearch;
 }

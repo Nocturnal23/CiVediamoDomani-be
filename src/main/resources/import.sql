@@ -3,3 +3,11 @@ INSERT INTO users (user_id, created_date, modified_date, deleted, state, url, ap
 INSERT INTO users (user_id, created_date, modified_date, deleted, state, url, app_role, email, first_name, last_name, password) VALUES (nextval('users_id_seq'), CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, 'ATTIVO', 'norm2l', 2, 'user@user2', 'User2N', 'User2C', '$2a$10$BItqTNuv4GGnD1eovmtnN.ehfSuXFpqbn9b6y7MnLOV.bSnBjwOFS');
 INSERT INTO users (user_id, created_date, modified_date, deleted, state, url, app_role, email, first_name, last_name, password) VALUES (nextval('users_id_seq'), CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, 'ATTIVO', 'norm3l', 2, 'user@user3', 'User3N', 'User3C', '$2a$10$BItqTNuv4GGnD1eovmtnN.ehfSuXFpqbn9b6y7MnLOV.bSnBjwOFS');
 INSERT INTO users (user_id, created_date, modified_date, deleted, state, url, app_role, email, first_name, last_name, password) VALUES (nextval('users_id_seq'), CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, 'ATTIVO', 'norm4l', 2, 'user@user4', 'User4N', 'User4C', '$2a$10$BItqTNuv4GGnD1eovmtnN.ehfSuXFpqbn9b6y7MnLOV.bSnBjwOFS');
+
+
+insert into categories(category_id, created_date, deleted, modified_date, url, name, father_category_id) values (nextval('categories_id_seq'), CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 'catsport', 'Sport', null );
+insert into categories(category_id, created_date, deleted, modified_date, url, name, father_category_id) values (nextval('categories_id_seq'), CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 'catcalcio', 'Calcio', 1 );
+insert into categories(category_id, created_date, deleted, modified_date, url, name, father_category_id) values (nextval('categories_id_seq'), CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 'catbasket', 'Basket', 1 );
+insert into categories(category_id, created_date, deleted, modified_date, url, name, father_category_id) values (nextval('categories_id_seq'), CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 'cattennis', 'Tennis', 1 );
+insert into categories(category_id, created_date, deleted, modified_date, url, name, father_category_id) values (nextval('categories_id_seq'), CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 'catmusic', 'Musica', null );
+insert into categories(category_id, created_date, deleted, modified_date, url, name, father_category_id) values (nextval('categories_id_seq'), CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 'catrave', 'Rave', 5 );

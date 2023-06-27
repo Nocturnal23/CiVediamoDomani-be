@@ -1,6 +1,5 @@
 package com.progettoweb.civediamodomanibe.core.templates;
 
-import com.progettoweb.civediamodomanibe.dto.CategoryDto;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

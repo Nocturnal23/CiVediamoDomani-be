@@ -5,17 +5,21 @@ import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.entity.UserAccount;
 import org.mapstruct.*;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 @Mapper(componentModel = "spring",
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
-        uses = {EventBidirectionalMapper.class, CategoryBidirectionalMapper.class})
+        uses = {EventBidirectionalMapper.class, CategoryBidirectionalMapper.class},
+        imports = {Collections.class, Collectors.class})
 public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, UserAccount> {
 
     @Override
-    @Mapping(target = "organisedEvents", expression = "java(entity.getOrganisedEvents() == null ? 0 : entity.getOrganisedEvents().size())")
-    @Mapping(target = "favorites", expression = "java(entity.getFavorites() == null ? 0 : entity.getFavorites().size())")
-    @Mapping(target = "attending", expression = "java(entity.getAttending() == null ? 0 : entity.getAttending().size())")
-    UserDto toDto(UserAccount entity);
+    @Mapping(target = "organisedEvents", expression = "java(entity.getAttending() == null ? Collections.singletonList(\"\") : entity.getOrganisedEvents().stream().map(event -> event.getUrl()).collect(Collectors.toList()))")
+    @Mapping(target = "attending", expression = "java(entity.getAttending() == null ? Collections.singletonList(\"\") : entity.getAttending().stream().map(event -> event.getUrl()).collect(Collectors.toList()))")
+    @Mapping(target = "favorites", expression = "java(entity.getFavorites() == null ? Collections.singletonList(\"\") : entity.getFavorites().stream().map(event -> event.getUrl()).collect(Collectors.toList()))")
+    UserDto  toDto(UserAccount entity);
 
     @Override
     @Mapping(source = "entity.id", target = "id")

@@ -5,15 +5,19 @@ import com.progettoweb.civediamodomanibe.dto.EventDto;
 import com.progettoweb.civediamodomanibe.entity.Event;
 import org.mapstruct.*;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 @Mapper(componentModel = "spring",
+        imports = {Collections.class, Collectors.class},
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         uses = {UserBidirectionalMapper.class, CategoryBidirectionalMapper.class})
 public interface EventBidirectionalMapper extends BidirectionalMapper<EventDto, Event> {
 
     @Override
-    @Mapping(target = "attendees", expression = "java(entity.getAttendees() == null ? 0 : entity.getAttendees().size())")
-    @Mapping(target = "followers", expression = "java(entity.getFollowers() == null ? 0 : entity.getFollowers().size())")
+    @Mapping(target = "attendees", expression = "java(entity.getAttendees() == null ? Collections.singletonList(\"\") : entity.getAttendees().stream().map(userAccount -> userAccount.getUrl()).collect(Collectors.toList()))")
+    @Mapping(target = "followers", expression = "java(entity.getFollowers() == null ? Collections.singletonList(\"\") : entity.getFollowers().stream().map(userAccount -> userAccount.getUrl()).collect(Collectors.toList()))")
     EventDto toDto(Event entity);
 
     @Override

@@ -8,6 +8,7 @@ import org.springframework.lang.NonNull;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Table(name = "events")
@@ -39,7 +40,7 @@ public class Event extends BaseEntity {
     private String coordinates;
 
     @Column(name = "datetime")
-    private LocalDate datetime;
+    private LocalDateTime datetime;
 
     @Column(name = "description")
     @NonNull

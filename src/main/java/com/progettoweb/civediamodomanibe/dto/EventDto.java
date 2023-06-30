@@ -4,6 +4,7 @@ import com.progettoweb.civediamodomanibe.core.templates.BaseDto;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -22,7 +23,7 @@ public class EventDto extends BaseDto {
 
     private String coordinates;
 
-    private LocalDate datetime;
+    private LocalDateTime datetime;
 
     private String description;
 

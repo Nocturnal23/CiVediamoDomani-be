@@ -1,6 +1,7 @@
 package com.progettoweb.civediamodomanibe.repository.specification;
 
 import com.progettoweb.civediamodomanibe.core.templates.SpecificationBuilder;
+import com.progettoweb.civediamodomanibe.entity.Category;
 import com.progettoweb.civediamodomanibe.entity.Event;
 import com.progettoweb.civediamodomanibe.entity.UserAccount;
 import com.progettoweb.civediamodomanibe.repository.criteria.EventCriteria;
@@ -45,6 +46,15 @@ public class EventSpecificationBuilder extends SpecificationBuilder<Event, Event
                     (root, query, criteriaBuilder) -> {
                         Join<Event, UserAccount> join = root.join( "attendees", JoinType.LEFT );
                         return criteriaBuilder.equal( join.get("id"), criteria.getAttendeeId() );
+                    }
+            );
+        }
+
+        if( criteria.getCategory() != null ) {
+            specification = Objects.requireNonNull(specification).and(
+                    (root, query, criteriaBuilder) -> {
+                        Join<Event, Category> join = root.join( "categories", JoinType.LEFT );
+                        return criteriaBuilder.like(criteriaBuilder.lower(join.get("name")), "%" + criteria.getCategory().toLowerCase() + "%");
                     }
             );
         }

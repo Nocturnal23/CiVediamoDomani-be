@@ -25,7 +25,7 @@ public class EmailService {
                 MimeMessage message = emailSender.createMimeMessage();
                 message.setText(text);
                 message.setSubject(subject);
-                message.setFrom("noreply@civediamodomani.it"); //TODO: Forse richiede indirizzo esistente
+                message.setFrom("devtestiet@outlook.it"); //TODO: Forse richiede indirizzo esistente
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 
                 emailSender.send(message);

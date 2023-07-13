@@ -33,4 +33,9 @@ public class AuthenticationController {
     public ResponseEntity<UserDto> googleSignIn(@RequestBody SocialUserDto user, HttpServletResponse response) {
         return new ResponseEntity<>(authenticationService.googleSignIn(user, response), HttpStatus.OK);
     }
+
+    @PostMapping("/resetPassword")
+    public ResponseEntity<UserDto> resetPassword(@RequestBody String email) {
+        return new ResponseEntity<>(authenticationService.resetPassword(email), HttpStatus.OK);
+    }
 }

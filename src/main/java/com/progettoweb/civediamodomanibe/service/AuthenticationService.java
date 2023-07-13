@@ -3,6 +3,7 @@ package com.progettoweb.civediamodomanibe.service;
 import com.nimbusds.jose.JOSEException;
 import com.progettoweb.civediamodomanibe.core.config.TokenManager;
 import com.progettoweb.civediamodomanibe.core.utils.Constants;
+import com.progettoweb.civediamodomanibe.core.utils.Utils;
 import com.progettoweb.civediamodomanibe.dto.SocialUserDto;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
 import com.progettoweb.civediamodomanibe.entity.UserAccount;
@@ -31,6 +32,9 @@ public class AuthenticationService {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private EmailService emailService;
 
     public UserDto signUp(UserDto user) {
         if(userService.findByEmail(user.getEmail()) != null)
@@ -76,5 +80,17 @@ public class AuthenticationService {
         } catch (JOSEException e) {
             throw new RuntimeException(e.getMessage());
         }
+    }
+
+    public UserDto resetPassword(String email) {
+        UserAccount user = userService.findByEmail(email);
+        if( user != null ) {
+            String password = Utils.generateAlphaNumericString(10);
+            user.setPassword( passwordEncoder.encode(password) );
+            userService.save(user);
+            emailService.sendSimpleMessage( email, "Reset Password", password );
+        }
+
+        return null;
     }
 }

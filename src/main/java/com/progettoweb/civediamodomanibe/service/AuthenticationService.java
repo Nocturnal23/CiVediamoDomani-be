@@ -88,7 +88,7 @@ public class AuthenticationService {
             String password = Utils.generateAlphaNumericString(10);
             user.setPassword( passwordEncoder.encode(password) );
             userService.save(user);
-            emailService.sendSimpleMessage( email, "Reset Password", password );
+            emailService.sendSimpleMessage( email, "Reset Password", "Gentile utente, la sua nuova password è " + password );
         }
 
         return null;

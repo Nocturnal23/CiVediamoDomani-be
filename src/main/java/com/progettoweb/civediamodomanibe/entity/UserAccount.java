@@ -61,4 +61,13 @@ public class UserAccount extends BaseEntity {
     @JoinTable(name = "user_favorites", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "event_id")})
     private List<Event> favorites;
 
+    @Column(name = "search_location")
+    private String searchLocation;
+
+    @Column(name = "search_latitude")
+    private String searchLatitude;
+
+    @Column(name = "search_longitude")
+    private String searchLongitude;
+
 }

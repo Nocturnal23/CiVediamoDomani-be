@@ -5,6 +5,7 @@ import com.progettoweb.civediamodomanibe.entity.Category;
 import com.progettoweb.civediamodomanibe.entity.Event;
 import com.progettoweb.civediamodomanibe.entity.UserAccount;
 import com.progettoweb.civediamodomanibe.repository.criteria.EventCriteria;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import org.springframework.data.jpa.domain.Specification;
@@ -20,8 +21,13 @@ public class EventSpecificationBuilder extends SpecificationBuilder<Event, Event
 
         if( criteria.getEventTitle() != null ) {
             specification = Objects.requireNonNull(specification).and(
-                    ((root, query, criteriaBuilder) ->
-                            criteriaBuilder.like(criteriaBuilder.lower(root.get("title")), "%" + criteria.getEventTitle().toLowerCase() + "%"))
+                    ((root, query, criteriaBuilder) -> {
+                        CriteriaBuilder.In<String> in = criteriaBuilder.in(criteriaBuilder.lower(root.get("title")));
+                        for (String value : criteria.getEventTitle()) {
+                            in = in.value(value.toLowerCase());
+                        }
+                        return in;
+                    })
             );
         }
 
@@ -50,11 +56,15 @@ public class EventSpecificationBuilder extends SpecificationBuilder<Event, Event
             );
         }
 
-        if( criteria.getCategory() != null ) {
+        if( criteria.getCategories() != null ) {
             specification = Objects.requireNonNull(specification).and(
                     (root, query, criteriaBuilder) -> {
                         Join<Event, Category> join = root.join( "categories", JoinType.LEFT );
-                        return criteriaBuilder.like(criteriaBuilder.lower(join.get("name")), "%" + criteria.getCategory().toLowerCase() + "%");
+                        CriteriaBuilder.In<String> in = criteriaBuilder.in(criteriaBuilder.lower(join.get("name")));
+                        for (String value : criteria.getCategories()) {
+                            in = in.value(value.toLowerCase());
+                        }
+                        return in;
                     }
             );
         }

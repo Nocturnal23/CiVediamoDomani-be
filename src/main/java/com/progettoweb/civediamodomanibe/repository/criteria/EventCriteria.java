@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EventCriteria extends BaseCriteria {
-    private String searchValue;
+    private String eventTitle;
     private Long organiserId;
     private Long followerId;
     private Long attendeeId;

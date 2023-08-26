@@ -18,10 +18,10 @@ public class EventSpecificationBuilder extends SpecificationBuilder<Event, Event
     public Specification<Event> filter(EventCriteria criteria) {
         Specification<Event> specification = super.filter(criteria);
 
-        if( criteria.getSearchValue() != null ) {
+        if( criteria.getEventTitle() != null ) {
             specification = Objects.requireNonNull(specification).and(
                     ((root, query, criteriaBuilder) ->
-                            criteriaBuilder.like(criteriaBuilder.lower(root.get("title")), "%" + criteria.getSearchValue().toLowerCase() + "%"))
+                            criteriaBuilder.like(criteriaBuilder.lower(root.get("title")), "%" + criteria.getEventTitle().toLowerCase() + "%"))
             );
         }
 

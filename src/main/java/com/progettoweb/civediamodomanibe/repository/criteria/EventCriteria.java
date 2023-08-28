@@ -5,13 +5,15 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Data
 @Getter
 @Setter
 public class EventCriteria extends BaseCriteria {
-    private String searchValue;
+    private List<String> eventTitle;
     private Long organiserId;
     private Long followerId;
     private Long attendeeId;
-    private String category;
+    private List<String> categories;
 }

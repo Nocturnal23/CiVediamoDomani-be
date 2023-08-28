@@ -9,7 +9,6 @@ import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 import org.springframework.lang.NonNull;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

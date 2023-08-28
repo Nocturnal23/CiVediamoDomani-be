@@ -3,7 +3,6 @@ package com.progettoweb.civediamodomanibe.dto;
 import com.progettoweb.civediamodomanibe.core.templates.BaseDto;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

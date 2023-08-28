@@ -3,7 +3,6 @@ package com.progettoweb.civediamodomanibe.controller;
 import com.progettoweb.civediamodomanibe.core.templates.ControllerTemplate;
 import com.progettoweb.civediamodomanibe.core.utils.Constants.Endpoint;
 import com.progettoweb.civediamodomanibe.dto.UserDto;
-import com.progettoweb.civediamodomanibe.entity.UserAccount;
 import com.progettoweb.civediamodomanibe.repository.UserRepository;
 import com.progettoweb.civediamodomanibe.repository.criteria.UserCriteria;
 import com.progettoweb.civediamodomanibe.service.UserService;

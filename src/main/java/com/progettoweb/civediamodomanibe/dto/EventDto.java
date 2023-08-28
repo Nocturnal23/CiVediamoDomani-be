@@ -29,6 +29,8 @@ public class EventDto extends BaseDto {
 
     private Float price;
 
+    private byte[] image;
+
     private List<CategoryDto> categories;
 
     private List<String> attendees;

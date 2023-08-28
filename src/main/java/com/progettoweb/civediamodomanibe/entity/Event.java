@@ -4,6 +4,8 @@ import com.progettoweb.civediamodomanibe.core.templates.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 import org.springframework.lang.NonNull;
 
 import jakarta.persistence.*;
@@ -49,6 +51,11 @@ public class Event extends BaseEntity {
     @Column(name = "price")
     @NonNull
     private Float price;
+
+    @Lob
+    @Column(name = "image")
+    @JdbcType(VarbinaryJdbcType.class)
+    private byte[] image;
 
     @ManyToMany
     @JoinTable(name = "event_category", joinColumns = {@JoinColumn(name = "event_id")},

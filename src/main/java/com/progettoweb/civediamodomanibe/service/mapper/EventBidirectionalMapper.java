@@ -33,6 +33,7 @@ public interface EventBidirectionalMapper extends BidirectionalMapper<EventDto, 
     @Mapping(source = "dto.description", target = "description")
     @Mapping(source = "dto.price", target = "price")
     @Mapping(source = "dto.categories", target = "categories")
+    @Mapping(source = "dto.image", target = "image")
     @Mapping(target = "attendees", ignore = true)
     @Mapping(target = "followers", ignore = true)
     @Mapping(source = "dto.url", target = "url")

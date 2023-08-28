@@ -18,10 +18,6 @@ public class EventController extends ControllerTemplate<EventDto, EventCriteria,
         super(service);
     }
 
-    @GetMapping("/hello")
-    public String helloWorld() {
-        return "Hello World!";
-    }
 
     @PutMapping("/{url}/addImage")
     public ResponseEntity<EventDto> addImageToEvent(@PathVariable String url, @RequestParam("file") MultipartFile file) {

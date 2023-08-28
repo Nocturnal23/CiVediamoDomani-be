@@ -15,8 +15,4 @@ public class CategoryController extends ControllerTemplate<CategoryDto, Category
         super(service);
     }
 
-    @GetMapping("/hello")
-    public String helloWorld() {
-        return "Hello World!";
-    }
 }

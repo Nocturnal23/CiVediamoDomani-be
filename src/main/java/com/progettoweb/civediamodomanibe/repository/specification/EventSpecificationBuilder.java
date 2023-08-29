@@ -21,13 +21,8 @@ public class EventSpecificationBuilder extends SpecificationBuilder<Event, Event
 
         if( criteria.getEventTitle() != null ) {
             specification = Objects.requireNonNull(specification).and(
-                    ((root, query, criteriaBuilder) -> {
-                        CriteriaBuilder.In<String> in = criteriaBuilder.in(criteriaBuilder.lower(root.get("title")));
-                        for (String value : criteria.getEventTitle()) {
-                            in = in.value(value.toLowerCase());
-                        }
-                        return in;
-                    })
+                    ((root, query, criteriaBuilder) ->
+                            criteriaBuilder.like(criteriaBuilder.lower(root.get("title")), "%" + criteria.getEventTitle().get(0).toLowerCase() + "%"))
             );
         }
 

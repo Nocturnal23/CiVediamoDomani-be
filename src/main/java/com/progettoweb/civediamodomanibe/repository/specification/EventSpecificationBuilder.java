@@ -19,7 +19,7 @@ public class EventSpecificationBuilder extends SpecificationBuilder<Event, Event
     public Specification<Event> filter(EventCriteria criteria) {
         Specification<Event> specification = super.filter(criteria);
 
-        if( criteria.getEventTitle() != null ) {
+        if( criteria.getEventTitle() != null && !criteria.getEventTitle().isEmpty() ) {
             specification = Objects.requireNonNull(specification).and(
                     ((root, query, criteriaBuilder) ->
                             criteriaBuilder.like(criteriaBuilder.lower(root.get("title")), "%" + criteria.getEventTitle().get(0).toLowerCase() + "%"))
@@ -51,7 +51,7 @@ public class EventSpecificationBuilder extends SpecificationBuilder<Event, Event
             );
         }
 
-        if( criteria.getCategories() != null ) {
+        if( criteria.getCategories() != null && !criteria.getCategories().isEmpty() ) {
             specification = Objects.requireNonNull(specification).and(
                     (root, query, criteriaBuilder) -> {
                         Join<Event, Category> join = root.join( "categories", JoinType.LEFT );

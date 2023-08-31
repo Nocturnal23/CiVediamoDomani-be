@@ -31,8 +31,6 @@ public class UserDto extends BaseDto {
 
     private List<String> attending;
 
-    private List<CategoryDto> categories;
-
     private String searchLocation;
 
     private String searchLatitude;

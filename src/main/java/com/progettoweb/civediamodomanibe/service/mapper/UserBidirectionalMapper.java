@@ -35,7 +35,6 @@ public interface UserBidirectionalMapper extends BidirectionalMapper<UserDto, Us
     @Mapping(target = "organisedEvents", ignore = true)
     @Mapping(target = "favorites", ignore = true)
     @Mapping(target = "attending", ignore = true)
-    @Mapping(source = "dto.categories", target = "categories")
     @Mapping(source = "dto.url", target = "url")
     @Mapping(source = "dto.searchLocation", target = "searchLocation")
     @Mapping(source = "dto.searchLatitude", target = "searchLatitude")

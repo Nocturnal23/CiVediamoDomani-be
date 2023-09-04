@@ -11,6 +11,8 @@ import jakarta.persistence.criteria.JoinType;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Component
@@ -61,6 +63,14 @@ public class EventSpecificationBuilder extends SpecificationBuilder<Event, Event
                         }
                         return in;
                     }
+            );
+        }
+
+        if(criteria.getEventDate() != null && !criteria.getEventDate().isEmpty()){
+            LocalDateTime ldt = LocalDateTime.parse(criteria.getEventDate().get(0), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            specification = Objects.requireNonNull(specification).and(
+                    (((root, criteriaQuery, criteriaBuilder) ->
+                            criteriaBuilder.greaterThanOrEqualTo(root.get("datetime"), ldt)))
             );
         }
 

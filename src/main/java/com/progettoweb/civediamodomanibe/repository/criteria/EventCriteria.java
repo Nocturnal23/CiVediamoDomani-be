@@ -16,4 +16,5 @@ public class EventCriteria extends BaseCriteria {
     private Long followerId;
     private Long attendeeId;
     private List<String> categories;
+    private List<String> eventDate;
 }
